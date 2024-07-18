@@ -23,7 +23,7 @@ To understand why TTT is so important, let's first look at the problems with cur
     - Good: They're excellent at understanding long texts and finding connections between different parts.
     - Bad: They need a lot of computer power, especially for very long texts, which can be slow and expensive.
 
-The researchers highlight this trade-off, noting that **"RNN layers have to compress context into a hidden state of fixed size"** while **"self-attention can also be viewed from the perspective above, except that its hidden state, commonly known as the Key-Value (KV) cache, is a list that grows linearly with $t$"** *[Section 2]*. They further explain that **"Self-attention can capture long-range dependencies, but scanning this linearly growing hidden state also takes linearly growing time per token"** *[Section 2]*.
+The researchers highlight this trade-off, noting that **"RNN layers have to compress context into a hidden state of fixed size"** while **"self-attention can also be viewed from the perspective above, except that its hidden state, commonly known as the Key-Value (KV) cache, is a list that grows linearly with t"** *[Section 2]*. They further explain that **"Self-attention can capture long-range dependencies, but scanning this linearly growing hidden state also takes linearly growing time per token"** *[Section 2]*.
 
 ### Introducing Test-Time Training (TTT)
 
@@ -36,9 +36,9 @@ Usually, AI models are trained once and then used without changing. TTT models c
 3. **Self-Supervised Learning:**
 The small AI model in the hidden state learns by trying to predict parts of the input text. This is called "self-supervised learning" because it doesn't need humans to provide correct answers. The paper describes this as **"a step of gradient descent on some self-supervised loss ℓ"** *[Section 2.1]*. They provide an example of such a loss function: 
     
-    **$ℓ(W; xₜ) = ∥f(x̃ₜ; W) - xₜ∥²$**
+    **ℓ(W; xₜ) = ∥f(x̃ₜ; W) - xₜ∥²**
     
-    where $x̃ₜ$ is a corrupted version of the input $xₜ$. *[Section 2.1]*
+    where x̃ₜ is a corrupted version of the input xₜ. *[Section 2.1]*
     
 
 ### How TTT Works?
@@ -56,17 +56,17 @@ Both versions work by continuously updating their understanding as they read thr
 
 **Update rule:**
 
-$Wₜ = Wₜ₋₁ - η ∇ℓ(Wₜ₋₁; xₜ)$
+Wₜ = Wₜ₋₁ - η ∇ℓ(Wₜ₋₁; xₜ)
 
 **Output rule:**
 
-$zₜ = f(xₜ; Wₜ)$
+zₜ = f(xₜ; Wₜ)
 
 The authors also introduce a "mini-batch TTT" approach to improve efficiency: **"We use** 
 
-**$Gₜ = ∇ℓ(W'ₜ; xₜ)$** 
+**Gₜ = ∇ℓ(W'ₜ; xₜ)** 
 
-**where $t' = t - mod(t, b)$ is the last timestep of the previous mini-batch (or 0 for the first mini-batch), so we can parallelize $b$ gradient computations at a time"** *[Section 2.4]*.
+**where t' = t - mod(t, b) is the last timestep of the previous mini-batch (or 0 for the first mini-batch), so we can parallelize b gradient computations at a time"** *[Section 2.4]*.
 
 ### Why TTT is Important?
 
@@ -91,7 +91,7 @@ For long texts, TTT-Linear can actually work faster than Transformers. The paper
     that **"TTT-Linear is faster than Transformer at 8k context and matches Mamba in wall-clock time"** *[Section 1]*. **They achieve this efficiency through techniques like "mini-batch TTT and the dual form"** *[Section 2.5]*.
     
 3. **Flexible and Adaptable:**
-The TTT approach isn't just for text. The researchers believe it could be useful for other tasks that involve sequences, like understanding videos or controlling robots. They mention potential applications **"such as robot manipulation and locomotion"** *[Section 4.2.1]* and suggest that **"for video tasks and embodied agents, whose context length can easily scale up to millions or billions, $f$ could be a convolutional neural network"** *[Section 5]*.
+The TTT approach isn't just for text. The researchers believe it could be useful for other tasks that involve sequences, like understanding videos or controlling robots. They mention potential applications **"such as robot manipulation and locomotion"** *[Section 4.2.1]* and suggest that **"for video tasks and embodied agents, whose context length can easily scale up to millions or billions, f could be a convolutional neural network"** *[Section 5]*.
 
 ### How Well Does TTT Work?
 
