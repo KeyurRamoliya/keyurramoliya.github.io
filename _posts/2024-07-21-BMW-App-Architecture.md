@@ -2,7 +2,8 @@
 layout: post
 title: "BMW Connected Vehicle and App Experience Architecture"
 categories:
-- programming, architecture
+- programming
+- architecture
 tags:
 - Cloud
 - Azure
