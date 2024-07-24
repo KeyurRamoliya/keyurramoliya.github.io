@@ -38,7 +38,7 @@ Take a look at the diagram below to see their architecture.
 - Fully managed, scalable and high availability
 - Cold start times and scaling costs
 
-|![TTT](/assets/images/2024/07/21/1.png)|
+|![BMW](/assets/images/2024/07/21/1.png)|
 |:--:| 
 |*Architecture Evolution - 2014-16*|
 
@@ -48,7 +48,7 @@ Take a look at the diagram below to see their architecture.
 - Gradual migration to Service Fabric
 - Introduction of API management
 
-|![TTT](/assets/images/2024/07/21/2.png)|
+|![BMW](/assets/images/2024/07/21/2.png)|
 |:--:| 
 |*Architecture Evolution - 2016-18*|
 
@@ -60,7 +60,7 @@ Take a look at the diagram below to see their architecture.
 - Azure virtual machine scale sets for microservices, logging and monitoring
 - All resources are created and maintained using Terraform
 
-|![TTT](/assets/images/2024/07/21/3.png)|
+|![BMW](/assets/images/2024/07/21/3.png)|
 |:--:| 
 |*Architecture Evolution - 2018-24*|
 
