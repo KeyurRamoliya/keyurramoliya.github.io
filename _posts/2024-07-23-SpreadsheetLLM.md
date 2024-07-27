@@ -12,7 +12,6 @@ tags:
 - Machine Learning
 - Spreadsheets
 - Large Language Models
-- Data Analysis
 - Data Management
 - Research
 - Microsoft
