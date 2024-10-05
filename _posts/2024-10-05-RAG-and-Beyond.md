@@ -21,6 +21,10 @@ tags:
 
 In recent years, Large Language Models (LLMs) have emerged as powerful tools in natural language processing, demonstrating remarkable capabilities across various tasks. However, these models often face significant limitations when it comes to domain-specific knowledge, up-to-date information, and factual accuracy. To address these challenges, researchers have been exploring ways to augment LLMs with external data sources. This article delves into the concept of data-augmented LLMs, with a particular focus on Retrieval-Augmented Generation (RAG) and related techniques, based on the comprehensive survey paper "[RAG and Beyond: A Comprehensive Survey on How to Make your LLMs use External Data More Wisely.](https://arxiv.org/abs/2409.14924)"
 
+If you are not comfortable reading entire article, please take a look at podcast below and shout out to Google Gemini for its 🤯🤯🤯 capabilities.
+
+{% include embed/youtube.html id='nFxaU0jVBHE' %}
+
 The need for data-augmented LLMs arises from several key limitations of standalone models. Despite their impressive capabilities, LLMs struggle with temporal relevance, as their knowledge is based on training data that can quickly become outdated, especially in rapidly evolving fields. They also often lack specialized knowledge required for specific industries or scientific domains. Perhaps most concerningly, LLMs can sometimes generate plausible-sounding but factually incorrect information, a phenomenon known as "**hallucination**." Additionally, controlling and interpreting the outputs of these models can be challenging, making it difficult to guide them to use specific information or explain their reasoning process.
 
 Data-augmented LLMs aim to address these limitations by incorporating external data sources during the inference process. This approach offers several significant advantages, as highlighted in the research paper. **"Data augmented LLM applications have demonstrated advantages over applications built solely on generic LLMs"** *(Introduction)* in several key aspects.
