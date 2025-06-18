@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Understading HNSW - Hierarchical Navigable Small World"
+title: "Understanding HNSW - Hierarchical Navigable Small World"
 categories:
 - programming
 - research
