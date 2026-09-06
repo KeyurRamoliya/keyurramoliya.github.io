@@ -28,3 +28,7 @@ assets/js/dist
 
 # Mac Files
 .DS_Store
+
+# Hidden system files
+*~
+Thumbs.db
