@@ -433,6 +433,26 @@ kbd {
   border-bottom: 1px solid var(--cc-outline-soft);
 }
 
+/* --- Right panel --- */
+
+.access > section,
+#toc-wrapper > * {
+  border-left: 1px solid var(--cc-pencil);
+  box-shadow:
+    inset 3px 0 0 var(--main-bg),
+    inset 4px 0 0 var(--cc-pencil);
+}
+
+/* Chirpy's solid-paper fades hide the grid; the top ones keep their height */
+#toc-wrapper::before,
+.toc-border-cover {
+  background: none;
+}
+
+#toc-wrapper::after {
+  display: none;
+}
+
 /*
  * Align the search box with the right panel's rule, replacing Chirpy's fixed
  * width and margin (`_sass/pages/_search.scss:23-35`). From `xl` the panel is
