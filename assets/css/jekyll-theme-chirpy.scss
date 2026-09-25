@@ -1,0 +1,1542 @@
+---
+---
+
+/*
+ * Overrides the gem's `assets/css/jekyll-theme-chirpy.scss`. The two `@use`
+ * rules mirror the gem's file (only the fonts differ); the rest restyles
+ * Chirpy as a light-only "engineer's notebook".
+ */
+
+@use 'abstracts/variables' as v with (
+  $theme: '{{ site.theme_mode }}',
+  $font-family-base: ('Caudex', Georgia, serif),
+  $font-family-heading: ('Fraunces', Georgia, serif)
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+@use 'sass:list';
+@use 'abstracts/breakpoints' as bp;
+
+/* append your custom style below */
+
+/* Chirpy only has body and heading font variables; families load via `_data/origin/cors.yml` */
+$cc-font-ui: ('Space Grotesk', -apple-system, 'Segoe UI', sans-serif);
+$cc-font-code: ('JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace);
+$cc-font-hand: ('Kalam', 'Comic Neue', cursive);
+
+/* --- Palette --- */
+
+:root {
+  --cc-blue: #3b73d1;
+  --cc-red: #d1453b;
+  --cc-green: #7cc242;
+  --cc-amber: #f0a92e;
+  --cc-violet: #8a63d2;
+}
+
+@mixin cc-light {
+  --cc-bg: #fbf8f1;
+  --cc-surface: #fffdf8;
+  --cc-grid: rgb(72 141 210 / 5%); /* kept faint so text stays in focus */
+  --cc-outline: #1c2a3a;
+  --cc-outline-soft: rgb(28 42 58 / 14%);
+  --cc-text: #2f3437;
+  --cc-heading: #15202e;
+  --cc-muted: #71716a; /* lightest gray at WCAG AA (4.6:1) on paper */
+  --cc-primary: #1f4fa3;
+  --cc-on-primary: #ffffff;
+  --cc-pencil: #c84238; /* AA 4.6:1 on paper */
+  --cc-highlight: rgb(178 240 80 / 60%);
+  --cc-highlight-soft: rgb(178 240 80 / 28%);
+  --cc-highlight-alt: rgb(186 156 255 / 45%);
+  --cc-code-bg: var(--cc-surface);
+
+  --cc-syn-comment: #717169; /* AA 4.6:1 on paper */
+  --cc-syn-keyword: #1f4fa3;
+  --cc-syn-string: #2f7d32;
+  --cc-syn-number: #b5501f;
+  --cc-syn-type: #7a3fb0;
+  --cc-syn-function: #b83b30;
+  --cc-syn-attr: #6b5a1e;
+}
+
+/* Map the palette onto Chirpy's variables (see the gem's `_sass/themes/_light.scss`) */
+@mixin cc-chirpy-vars {
+  /* Framework & common */
+  --main-bg: var(--cc-bg);
+  --main-border-color: var(--cc-outline-soft);
+  --text-color: var(--cc-text);
+  --text-muted-color: var(--cc-muted);
+  --heading-color: var(--cc-heading);
+  --label-color: var(--cc-muted);
+  --blockquote-border-color: var(--cc-pencil);
+  --link-color: var(--cc-primary);
+  --link-underline-color: color-mix(in srgb, var(--cc-primary) 35%, transparent);
+  --button-bg: var(--cc-surface);
+  --btn-border-color: var(--cc-outline-soft);
+  --btn-backtotop-color: var(--cc-heading);
+  --btn-backtotop-border-color: var(--cc-outline);
+
+  /* Sidebar */
+  --site-title-color: var(--cc-heading);
+  --site-subtitle-color: var(--cc-muted);
+  --sidebar-bg: var(--cc-surface);
+  --sidebar-border-color: var(--cc-pencil);
+  --sidebar-muted-color: var(--cc-text);
+  --sidebar-active-color: var(--cc-heading);
+  --sidebar-hover-bg: var(--cc-highlight-soft);
+  --sidebar-btn-bg: var(--cc-bg);
+  --sidebar-btn-color: var(--cc-muted);
+  --avatar-border-color: var(--cc-outline);
+
+  /* Topbar (not sticky, so it can be transparent and show the grid) */
+  --topbar-bg: transparent;
+  --topbar-text-color: var(--cc-text);
+  --search-border-color: var(--cc-outline-soft);
+  --input-focus-border-color: var(--cc-primary);
+
+  /* Home page */
+  --btn-patinator-text-color: var(--cc-text);
+  --btn-paginator-hover-color: var(--cc-highlight-soft);
+
+  /* Posts */
+  --toc-highlight: var(--cc-primary);
+  --btn-share-hover-color: var(--cc-primary);
+  --card-bg: var(--cc-surface);
+  --card-hover-bg: transparent;
+  --card-shadow: 0 0 0 1px var(--cc-outline);
+  --card-header-bg: var(--cc-surface);
+  --footnote-target-bg: var(--cc-highlight-soft);
+  --tb-odd-bg: transparent;
+  --tb-even-bg: transparent; /* Chirpy's light theme leaves this undefined */
+  --tb-border-color: var(--cc-outline-soft);
+
+  /* Prompts */
+  --prompt-tip-bg: color-mix(in srgb, var(--cc-green) 16%, var(--cc-surface));
+  --prompt-tip-icon-color: #5a8e2f; /* 3.4:1 on the tip tint */
+  --prompt-info-bg: color-mix(in srgb, var(--cc-blue) 12%, var(--cc-surface));
+  --prompt-info-icon-color: var(--cc-blue);
+  --prompt-warning-bg: color-mix(in srgb, var(--cc-amber) 18%, var(--cc-surface));
+  --prompt-warning-icon-color: #a8761f; /* 3.5:1 on the warning tint */
+  --prompt-danger-bg: color-mix(in srgb, var(--cc-red) 12%, var(--cc-surface));
+  --prompt-danger-icon-color: var(--cc-red);
+
+  /* Tags */
+  --tag-border: var(--cc-outline);
+  --tag-shadow: transparent;
+  --tag-hover: var(--cc-highlight-soft);
+
+  /* Categories */
+  --categories-border: var(--cc-outline);
+  --categories-hover-bg: var(--cc-highlight-soft);
+  --categories-icon-hover-color: var(--cc-primary);
+
+  /* Archive */
+  --timeline-color: var(--cc-outline-soft);
+  --timeline-node-bg: var(--cc-primary);
+  --timeline-year-dot-color: var(--cc-surface);
+
+  /* Code */
+  --language-border-color: var(--cc-outline);
+  --highlight-bg-color: var(--cc-code-bg);
+  --highlighter-rouge-color: var(--cc-primary); /* inline code text */
+  --highlight-lineno-color: var(--cc-muted);
+  --inline-code-bg: color-mix(in srgb, var(--cc-primary) 7%, transparent);
+  --code-color: var(--cc-text);
+  --code-header-text-color: var(--cc-muted);
+  --code-header-muted-color: var(--cc-outline-soft);
+  --code-header-icon-color: var(--cc-muted);
+
+  /* read by Bootstrap's `code, pre, kbd, samp`; outranks its `:root, [data-bs-theme=light]` */
+  --bs-font-monospace: #{$cc-font-code};
+}
+
+/* Rouge token colors; Chirpy's (`_sass/themes/_light.scss:122+`) share the selector, so source order wins */
+@mixin cc-syntax {
+  .highlight {
+    .c,
+    .c1,
+    .cm,
+    .cs,
+    .cp,
+    .ch,
+    .cpf {
+      color: var(--cc-syn-comment);
+      font-style: italic;
+    }
+
+    .k,
+    .kd,
+    .kn,
+    .kp,
+    .kr,
+    .kc,
+    .ow {
+      color: var(--cc-syn-keyword);
+      font-weight: 500;
+    }
+
+    .kt,
+    .nc,
+    .nn {
+      color: var(--cc-syn-type);
+    }
+
+    .s,
+    .s1,
+    .s2,
+    .sb,
+    .sc,
+    .sd,
+    .se,
+    .sh,
+    .si,
+    .sx,
+    .sr,
+    .ss {
+      color: var(--cc-syn-string);
+    }
+
+    .m,
+    .mi,
+    .mf,
+    .mh,
+    .mo,
+    .il {
+      color: var(--cc-syn-number);
+    }
+
+    .nf,
+    .fm,
+    .nd {
+      color: var(--cc-syn-function);
+    }
+
+    .na,
+    .nt,
+    .nb {
+      color: var(--cc-syn-attr);
+    }
+  }
+}
+
+/* Same selector as Chirpy's `_sass/base/_base.scss`, so this wins by source order */
+:root[data-bs-theme='light'] {
+  @include cc-light;
+  @include cc-chirpy-vars;
+  @include cc-syntax;
+}
+
+/* --- Hand-drawn marks --- */
+
+/* SVGs used as masks, so `background-color` can paint them in a theme color */
+$cc-squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 182 14'%3E%3Cpath d='M2 8C20 2 40 14 60 8S100 2 120 8 160 14 180 8' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+$cc-paper-clip: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 44'%3E%3Cpath d='M5 31V10a4 4 0 0 1 8 0v24a6 6 0 0 1-12 0V13' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+$cc-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 28'%3E%3Cg fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 4C8 18 20 24 35 17'/%3E%3Cpath d='M28 12L35 17 27 21'/%3E%3C/g%3E%3C/svg%3E");
+
+@mixin cc-mark($shape, $color: var(--cc-pencil)) {
+  background-color: $color;
+  -webkit-mask: $shape no-repeat center / 100% 100%;
+  mask: $shape no-repeat center / 100% 100%;
+}
+
+/*
+ * Highlighter drawn as a thick underline. Selection repaints underlines in the
+ * selection's text color, so use it only where text isn't normally selected.
+ */
+@mixin cc-highlighter($color: var(--cc-highlight)) {
+  text-decoration-line: underline;
+  text-decoration-color: $color;
+  text-decoration-thickness: 0.42em;
+  text-underline-offset: -0.28em;
+  text-decoration-skip-ink: none;
+}
+
+/* The same stroke as a background, which selection leaves alone; for inline elements */
+@mixin cc-highlighter-band($color: var(--cc-highlight)) {
+  background-image: linear-gradient(
+    transparent 55%,
+    $color 55%,
+    $color 88%,
+    transparent 88%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@mixin cc-tape($angle: 4deg) {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  width: 3rem;
+  height: 1rem;
+  pointer-events: none;
+  background-color: color-mix(in srgb, var(--cc-amber) 55%, transparent);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgb(255 255 255 / 18%) 0 4px,
+    transparent 4px 8px
+  );
+  transform: rotate($angle);
+}
+
+@keyframes cc-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* --- Page --- */
+
+footer {
+  background-color: transparent;
+}
+
+/* `--cc-selection` is switched to a random highlighter by `assets/js/palette.js` */
+::selection {
+  background-color: var(--cc-selection, var(--cc-highlight));
+}
+html {
+  scrollbar-color: color-mix(in srgb, var(--cc-primary) 45%, transparent)
+    transparent;
+}
+
+/* --- Hard-coded theme values --- */
+
+/* `%link-hover` (`_sass/abstracts/_placeholders.scss`) sets an orange color with `!important` */
+.post-meta a:not([class]):hover,
+.content a:not(.img-link):hover,
+footer a:hover,
+#access-lastmod a:hover,
+#topbar #breadcrumb a:hover,
+#page-category a:hover,
+#page-tag a:hover,
+#search-results a:hover,
+.post-tail-wrapper .license-wrapper > a:hover,
+.post-edit > a:hover {
+  color: var(--link-color) !important;
+  border-bottom-color: var(--link-color);
+}
+
+/* Trending tags are Bootstrap buttons with a hard-coded #007bff hover border */
+.btn.btn-outline-primary:not(.disabled):hover {
+  border-color: var(--cc-outline) !important;
+}
+
+/* Spots that set Lato / Oswald / sans-serif directly instead of the font variables */
+.pagination,
+#archives .date,
+.tag span {
+  font-family: $cc-font-ui;
+}
+
+kbd {
+  font-family: $cc-font-code;
+}
+
+#topbar-title {
+  font-family: v.$font-family-heading;
+}
+
+/* --- UI & metadata font --- */
+
+.post-meta,
+.readtime,
+#breadcrumb,
+#panel-wrapper .panel-heading {
+  font-family: $cc-font-ui;
+  font-size: 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+/* --- Sidebar & topbar --- */
+
+#sidebar {
+  border-right: 1px solid var(--sidebar-border-color);
+  box-shadow:
+    inset -3px 0 0 var(--sidebar-bg),
+    inset -4px 0 0 var(--sidebar-border-color);
+
+  .site-title {
+    font-family: v.$font-family-heading;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  ul li.nav-item a.nav-link span {
+    font-family: $cc-font-ui;
+  }
+
+  ul li.nav-item.active .nav-link {
+    background-color: transparent;
+
+    span {
+      @include cc-highlighter-band;
+    }
+  }
+
+  /*
+   * `!important` beats Bootstrap's `.rounded-circle`; hover straightens the
+   * photo instead of Chirpy's zoom (`_sass/layout/_sidebar.scss:69-75`).
+   */
+  #avatar {
+    position: relative;
+    overflow: visible;
+    padding: 5px;
+    border-radius: 4px !important;
+    background-color: var(--cc-surface);
+    box-shadow:
+      0 0 0 1px var(--cc-random-border, var(--cc-outline)),
+      0 8px 16px -10px rgb(0 0 0 / 45%);
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: rotate(0deg);
+    }
+
+    &::after {
+      @include cc-mark($cc-paper-clip);
+
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: -0.9rem;
+      left: 1.1rem;
+      width: 0.8rem;
+      height: 2.2rem;
+      pointer-events: none;
+      transform: rotate(8deg);
+    }
+
+    img {
+      border-radius: 2px;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+#topbar-wrapper {
+  border-bottom: 1px solid var(--cc-outline-soft);
+}
+
+/*
+ * Align the search box with the right panel's rule, replacing Chirpy's fixed
+ * width and margin (`_sass/pages/_search.scss:23-35`). From `xl` the panel is
+ * the last 25% of the row; offsets account for the topbar's 1rem padding and
+ * the panel column's 0.5rem / 0.75rem padding.
+ */
+@include bp.xl {
+  #topbar search {
+    width: calc(25% - 0.75rem);
+    max-width: none;
+    margin-right: -0.25rem;
+  }
+}
+
+/* --- Home page --- */
+
+.cc-home-hero {
+  margin-bottom: 2rem;
+
+  .cc-home-label {
+    font-family: $cc-font-hand;
+    font-size: 1.05rem;
+    color: var(--cc-pencil);
+    margin-bottom: 0.25rem;
+  }
+
+  .cc-home-tagline {
+    font-family: v.$font-family-heading;
+    font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: var(--cc-heading);
+    margin-bottom: 0;
+
+    span {
+      @include cc-highlighter-band(var(--cc-highlight-soft));
+    }
+  }
+}
+
+/* Home and "Further Reading" cards; the related list's title is an `h4` */
+#post-list,
+#related-posts {
+  .post-preview {
+    /* the outline ring in its random color; the hover shadow reuses it */
+    --card-shadow: 0 0 0 1px var(--cc-random-border, var(--cc-outline));
+
+    transition:
+      transform 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px -16px rgb(0 0 0 / 35%), var(--card-shadow);
+    }
+  }
+
+  /* transparent until hover, so the color can fade in */
+  .card-title,
+  .post-preview h4 {
+    @include cc-highlighter(transparent);
+
+    transition: text-decoration-color 0.2s ease-out;
+  }
+
+  .post-preview:hover .card-title,
+  .post-preview:hover h4 {
+    text-decoration-color: var(--cc-highlight);
+  }
+}
+
+#post-list {
+  .card-title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .pin {
+    color: var(--cc-pencil);
+  }
+
+  /* selectors mirror Chirpy's `_sass/pages/_home.scss` to outrank them */
+  .card-featured {
+    .preview-img,
+    .preview-img img {
+      border-radius: v.$radius-lg v.$radius-lg 0 0;
+    }
+
+    .card-body {
+      .card-title {
+        font-size: 1.6rem;
+      }
+
+      .card-text.content p {
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+
+  .cc-card-label {
+    font-family: $cc-font-hand;
+    font-size: 0.95rem;
+    color: var(--cc-pencil);
+  }
+
+  /* the meta line is truncated on narrow screens; keep the date visible */
+  .cc-card-readtime {
+    @include bp.lt(bp.get(md)) {
+      display: none;
+    }
+  }
+}
+
+.pagination .page-item.active .page-link {
+  color: var(--cc-heading);
+  box-shadow: inset 0 0 0 1px var(--cc-outline);
+}
+
+/* --- Posts --- */
+
+#main-wrapper article > header {
+  position: relative;
+
+  &::before {
+    @include cc-mark($cc-arrow);
+
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    left: -1.75rem; /* stays inside the main column's padding */
+    width: 1.5rem;
+    height: 1.05rem;
+    animation: cc-draw 0.5s ease-out both;
+
+    @include bp.lt(bp.get(lg)) {
+      display: none;
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    &::after {
+      @include cc-mark($cc-squiggle);
+
+      content: '';
+      display: block;
+      width: 11rem;
+      max-width: 60%;
+      height: 0.8rem;
+      margin-top: 0.4rem;
+      animation: cc-draw 0.8s ease-out 0.2s both;
+    }
+  }
+}
+
+.content {
+  /* the text `span`, not the whole heading, so the band skips the hidden `#` anchor */
+  h2 > span:first-child {
+    @include cc-highlighter-band;
+  }
+
+  h3 > span:first-child {
+    @include cc-highlighter-band(var(--cc-highlight-alt));
+  }
+
+  a:not(.img-link) {
+    background-image: linear-gradient(var(--cc-highlight), var(--cc-highlight));
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    background-size: 0% 0.45em;
+    transition: background-size 0.25s ease-out;
+
+    &:hover {
+      background-size: 100% 0.45em;
+    }
+  }
+
+  blockquote[class^='prompt-'] {
+    box-shadow:
+      0 0 0 1px var(--cc-outline-soft),
+      0 10px 18px -14px rgb(0 0 0 / 40%);
+  }
+}
+
+/*
+ * Opt out with `{: .no-border }` after an image in Markdown. `--cc-random-border`
+ * is a random color set per element by `assets/js/palette.js`.
+ */
+.content img:not(.no-border) {
+  border: 1px solid var(--cc-random-border, var(--cc-outline));
+  border-radius: 6px;
+}
+
+#main-wrapper article > header .preview-img {
+  border: 1px solid var(--cc-random-border, var(--cc-outline));
+}
+
+/* two strips of tape across the top corners, on `::before` and `::after` */
+@mixin cc-taped {
+  position: relative;
+
+  &::before {
+    @include cc-tape(-6deg);
+
+    top: -0.45rem;
+    left: 1.25rem;
+  }
+
+  &::after {
+    @include cc-tape(5deg);
+
+    top: -0.45rem;
+    right: 1.25rem;
+  }
+}
+
+/* `.preview-img` clips its overflow, so the cover's tape hangs off its parent */
+#main-wrapper article > header div:has(> .preview-img) {
+  @include cc-taped;
+}
+
+/* only once loaded: Chirpy's loading shimmer uses `.shimmer::before` until then */
+.content a.img-link:not(.shimmer, .preview-img) {
+  @include cc-taped;
+}
+
+/* --- Code blocks --- */
+
+/* JetBrains Mono ligatures (`=>`, `!=`, `::`) are on by default; keep them on */
+code,
+pre {
+  font-variant-ligatures: contextual common-ligatures;
+}
+
+/* Chirpy zeroes these margins only from `sm` (`_sass/base/_syntax.scss:124-128`) */
+div[class^='language-'] .code-header {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 0.25rem 0 0.75rem;
+  background-color: color-mix(in srgb, var(--cc-primary) 6%, var(--cc-code-bg));
+  border-bottom: 1px dashed var(--cc-outline-soft);
+
+  @include bp.sm {
+    padding-left: 0;
+    border-radius: v.$radius-lg v.$radius-lg 0 0;
+
+    /* one circle plus two `box-shadow` copies, as in `_syntax.scss:131-146` */
+    &::before {
+      background-color: var(--cc-red);
+      box-shadow:
+        (v.$code-dot-size + v.$code-dot-gap) 0 0 var(--cc-amber),
+        (v.$code-dot-size + v.$code-dot-gap) * 2 0 0 var(--cc-green);
+    }
+  }
+
+  span::after {
+    font-family: $cc-font-code;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* --- Tables --- */
+
+.content .table-wrapper > table {
+  /* replaces the hard-coded `rgb(210 215 217 / 75%)` rule (`_sass/base/_typography.scss:239`) */
+  thead {
+    border-bottom: 2px solid var(--cc-outline);
+    background-color: var(--cc-highlight-soft);
+  }
+
+  th,
+  td {
+    font-variant-numeric: tabular-nums;
+  }
+
+  th {
+    font-family: $cc-font-ui;
+    font-weight: 600; /* a loaded weight, not a synthesized bold */
+  }
+
+  /* kramdown marks right-aligned columns with an inline style */
+  td[style*='text-align: right'] {
+    font-family: $cc-font-ui;
+    font-size: 0.9rem;
+  }
+
+  /* one-cell tables used as image captions stay plain */
+  &:has(img) {
+    thead {
+      border-bottom: 0;
+      background-color: transparent;
+    }
+
+    tbody tr {
+      border-bottom: 0;
+    }
+
+    td {
+      white-space: normal;
+      font-size: 0.85rem;
+      color: var(--cc-muted);
+    }
+  }
+}
+
+/* --- Math --- */
+
+/* `[jax]` outranks MathJax's own container rule, which is injected after this stylesheet */
+.content mjx-container[jax][display='true'] {
+  display: block;
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--cc-outline-soft);
+  border-radius: 6px;
+  background-color: var(--cc-surface);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 1.45rem,
+    var(--cc-grid) 1.45rem 1.5rem
+  );
+}
+
+.content mjx-container mjx-math {
+  color: var(--cc-primary);
+}
+
+/*
+ * The `#cc-ink` filter comes from `assets/js/data/mathjax.js`. SVG filters
+ * paint on the CPU, so the wobble is limited to display equations.
+ */
+.content mjx-container[display='true'] mjx-math {
+  filter: url('#cc-ink');
+}
+
+/* --- Pull quotes --- */
+
+/*
+ * Usage:
+ *
+ *   > The quote text.
+ *   >
+ *   > — Author
+ *   {: .pull-quote }
+ */
+.content blockquote.pull-quote {
+  position: relative;
+  max-width: 36rem;
+  margin: 2.5rem auto 2rem;
+  padding: 1.5rem 1rem 0.5rem;
+  border-left: 0;
+  text-align: center;
+  font-family: v.$font-family-heading;
+  font-style: italic;
+  font-size: 1.45rem;
+  line-height: 1.4;
+  color: var(--cc-heading);
+
+  &::before {
+    content: '\201c';
+    position: absolute;
+    top: -1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4.5rem;
+    font-style: normal;
+    line-height: 1;
+    color: var(--cc-pencil);
+  }
+
+  > p:last-child:not(:first-child) {
+    margin-top: 0.75rem;
+    text-align: right;
+    font-family: $cc-font-ui;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: var(--cc-muted);
+  }
+}
+
+/* --- Margin notes (built by `assets/js/footnotes.js`) --- */
+
+.content a.footnote {
+  font-family: $cc-font-ui;
+  color: var(--cc-pencil);
+}
+
+.cc-sidenote {
+  display: none;
+
+  @include bp.lg {
+    display: block;
+    float: right;
+    clear: right;
+    width: 36%;
+    margin: 0.25rem 0 1rem 1.5rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--cc-pencil);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--cc-muted);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .cc-sidenote-num {
+    margin-right: 0.35rem;
+    font-family: $cc-font-ui;
+    font-size: 0.75rem;
+    color: var(--cc-pencil);
+  }
+}
+
+/* Reading progress bar, scroll-driven with no JS */
+@keyframes cc-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  body:has(article[data-toc])::before {
+    content: '';
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 1040;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cc-primary), var(--cc-pencil));
+    transform-origin: 0 50%;
+    animation: cc-progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+/* --- Tag chips --- */
+
+/* `--cc-chip` is cycled below; `--bs-btn-*` covers the trending tags, which are Bootstrap buttons */
+.post-tags .post-tag,
+#panel-wrapper .post-tag,
+#tags .tag {
+  --cc-chip: var(--cc-blue);
+  --cc-chip-bg: color-mix(in srgb, var(--cc-chip) 14%, transparent);
+  --cc-chip-hover-bg: color-mix(in srgb, var(--cc-chip) 30%, transparent);
+  --bs-btn-color: var(--cc-heading);
+  --bs-btn-bg: var(--cc-chip-bg);
+  --bs-btn-border-color: var(--cc-outline);
+  --bs-btn-hover-color: var(--cc-heading);
+  --bs-btn-hover-bg: var(--cc-chip-hover-bg);
+  --bs-btn-hover-border-color: var(--cc-outline);
+  --bs-btn-active-color: var(--cc-heading);
+  --bs-btn-active-bg: var(--cc-chip-hover-bg);
+  --bs-btn-active-border-color: var(--cc-outline);
+
+  font-family: $cc-font-ui;
+  color: var(--cc-heading);
+  background-color: var(--cc-chip-bg);
+  border: 1px solid var(--cc-outline);
+  border-radius: 4px;
+
+  &::before {
+    content: '#';
+    margin-right: 0.1em;
+    color: var(--cc-muted);
+  }
+
+  &:hover {
+    color: var(--cc-heading);
+    background-color: var(--cc-chip-hover-bg);
+  }
+}
+
+.post-tags .post-tag {
+  padding: 0 0.5rem;
+  font-size: 0.85rem;
+}
+
+$cc-chip-colors: blue, red, green, amber, violet;
+
+@for $i from 1 through list.length($cc-chip-colors) {
+  $color: list.nth($cc-chip-colors, $i);
+
+  .post-tags .post-tag:nth-of-type(5n + #{$i}),
+  #panel-wrapper .post-tag:nth-of-type(5n + #{$i}),
+  #tags > div:nth-child(5n + #{$i}) .tag {
+    --cc-chip: var(--cc-#{$color});
+  }
+}
+
+/* --- Categories & archives --- */
+
+.categories .card-header {
+  background-color: var(--card-header-bg);
+}
+
+.categories.card,
+.categories .list-group-item {
+  background-color: var(--card-bg);
+}
+
+#archives {
+  /* drop the hard-coded #c2c6cc glow around the timeline dots */
+  .year::after,
+  a::before {
+    box-shadow: none;
+  }
+
+  ul li {
+    border-bottom: 1px dashed var(--cc-outline-soft);
+  }
+}
+
+/* Hard-coded odd-row gradient (`_sass/pages/_archives.scss:69-79`); same selector, later */
+#archives ul li:nth-child(odd) {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* --- Buttons --- */
+
+#back-to-top:hover {
+  color: var(--cc-on-primary);
+  background: var(--cc-primary);
+  border-color: var(--cc-primary);
+}
+
+/* --- Motion --- */
+
+/* Cross-document View Transitions; the named sidebar and topbar stay put */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.18s;
+}
+
+#sidebar {
+  view-transition-name: cc-sidebar;
+}
+
+#topbar-wrapper {
+  view-transition-name: cc-topbar;
+}
+
+/*
+ * `backwards` fill only holds the start state during the delay, so the hover
+ * lift still works afterwards. The hero is a `<header>`, so
+ * `article:nth-of-type` counts cards only.
+ */
+@keyframes cc-lay-down {
+  from {
+    opacity: 0;
+    transform: translateY(10px) rotate(-0.4deg);
+  }
+}
+
+#post-list article.card-wrapper {
+  animation: cc-lay-down 0.45s ease-out backwards;
+
+  @for $i from 2 through 6 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: ($i - 1) * 0.07s;
+    }
+  }
+}
+
+/* Chirpy sets the copy button's `timeout` attribute for 2s, matching this animation */
+@keyframes cc-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) rotate(-8deg) scale(1.6);
+  }
+
+  12%,
+  80% {
+    opacity: 1;
+    transform: translateY(-50%) rotate(-8deg) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) rotate(-8deg) scale(1);
+  }
+}
+
+div[class^='language-'] .code-header > button {
+  position: relative;
+
+  &[timeout]::after {
+    content: 'Copied';
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 0.5rem);
+    padding: 0 0.35rem;
+    border: 1.5px solid var(--cc-pencil);
+    border-radius: 3px;
+    font-family: $cc-font-ui;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cc-pencil);
+    pointer-events: none;
+    animation: cc-stamp 2s ease-out both;
+  }
+}
+
+@keyframes cc-wiggle {
+  0%,
+  100% {
+    transform: rotate(8deg);
+  }
+
+  30% {
+    transform: rotate(2deg);
+  }
+
+  65% {
+    transform: rotate(12deg);
+  }
+}
+
+#sidebar #avatar:hover::after {
+  animation: cc-wiggle 0.5s ease-in-out;
+}
+
+/* on the link wrapper, so the lightbox and image outline are untouched */
+.content a.img-link:not(.preview-img) {
+  transform: rotate(-0.6deg);
+  transition: transform 0.25s ease-out;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.post-tags .post-tag,
+#panel-wrapper .post-tag,
+#tags .tag {
+  transition:
+    transform 0.2s ease-out,
+    background-color 0.2s ease-out;
+
+  &:hover {
+    transform: rotate(-2deg);
+  }
+}
+
+.post-tags .post-tag:nth-of-type(even):hover,
+#panel-wrapper .post-tag:nth-of-type(even):hover,
+#tags > div:nth-child(even) .tag:hover {
+  transform: rotate(2deg);
+}
+
+/* --- Ambient background (built by `assets/js/ambient.js`) --- */
+
+/*
+ * Only `transform` and `opacity` animate, so layers move without repainting.
+ * `--cc-phase` (seconds, set by the script) offsets every delay so the motion
+ * carries on across page loads instead of restarting.
+ */
+$cc-phase-delay: calc(var(--cc-phase, 0) * -1s);
+
+.cc-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* one grid square per cycle, so the loop is seamless */
+@keyframes cc-drift {
+  to {
+    transform: translate(24px, 24px);
+  }
+}
+
+@keyframes cc-breathe {
+  from {
+    opacity: 0.6;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.cc-ambient-grid {
+  position: absolute;
+  inset: -48px;
+  background-image:
+    linear-gradient(var(--cc-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cc-grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  animation:
+    cc-drift 20s linear infinite,
+    cc-breathe 16s ease-in-out infinite alternate;
+  animation-delay: $cc-phase-delay;
+}
+
+@keyframes cc-sun {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(45vw, 25vh);
+  }
+
+  100% {
+    transform: translate(90vw, 5vh);
+  }
+}
+
+.cc-ambient-light {
+  position: absolute;
+  top: -20vmax;
+  left: -20vmax;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--cc-amber) 10%, transparent),
+    transparent 65%
+  );
+  animation: cc-sun 60s ease-in-out infinite alternate;
+  animation-delay: $cc-phase-delay;
+}
+
+/* one noise tile per cycle, so the grain drifts without flickering */
+@keyframes cc-grain {
+  to {
+    transform: translate(120px, 120px);
+  }
+}
+
+/* no blend mode: blending re-composites the layer with everything under it each frame */
+.cc-ambient-grain {
+  position: absolute;
+  inset: -120px;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  animation: cc-grain 40s linear infinite;
+  animation-delay: $cc-phase-delay;
+}
+
+@keyframes cc-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(6deg);
+  }
+}
+
+@keyframes cc-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+
+  15%,
+  80% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-40vh) rotate(20deg);
+  }
+}
+
+/*
+ * The lower right panel column is the only empty area in Chirpy's layout, so
+ * doodles appear only where it exists (xl). Each glyph's `--i` (0-9, set by
+ * the script) varies its position, speed and delay.
+ */
+.cc-ambient-doodles {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 22vw;
+  height: 45vh;
+
+  @include bp.xl {
+    display: block;
+  }
+
+  span {
+    position: absolute;
+    left: calc(var(--i) * 9%);
+    font-family: $cc-font-hand;
+    font-size: 1.4rem;
+    color: var(--cc-pencil);
+    white-space: nowrap;
+
+    &:nth-child(even) {
+      font-family: $cc-font-code;
+      font-size: 1.1rem;
+      color: var(--cc-primary);
+    }
+
+    &:nth-child(3n) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .is-float {
+    bottom: calc(12% + var(--i) * 7%);
+    opacity: 0.08;
+    animation: cc-float calc(14s + var(--i) * 0.9s) ease-in-out infinite;
+    animation-delay: calc(var(--i) * -2.3s - var(--cc-phase, 0) * 1s);
+  }
+
+  .is-rise {
+    bottom: 0;
+    opacity: 0;
+    animation: cc-rise calc(18s + var(--i) * 1.3s) linear infinite;
+    animation-delay: calc(var(--i) * -3.1s - var(--cc-phase, 0) * 1s);
+  }
+}
+
+/* paused by the reader, and briefly while scrolling so scrolling gets the frame budget */
+html.cc-still .cc-ambient *,
+html.cc-scrolling .cc-ambient * {
+  animation-play-state: paused;
+}
+
+/* matches Chirpy's round sidebar buttons (`_sass/layout/_sidebar.scss:192-211`) */
+#sidebar .sidebar-bottom .cc-motion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0 v.$sb-btn-gap 0.5rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  color: var(--sidebar-btn-color);
+  background-color: var(--sidebar-btn-bg);
+  transition: background-color 0.2s ease-out;
+
+  @include bp.xxxl {
+    margin-right: v.$sb-btn-gap-lg;
+  }
+
+  &:not(:focus-visible) {
+    box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+  }
+
+  &:hover {
+    color: var(--sidebar-active-color);
+    background-color: var(--sidebar-hover-bg);
+  }
+}
+
+/* --- Reading aids --- */
+
+/* replaces Chirpy's bar and bold (`_sass/pages/_post.scss:305-313`); the link is one line */
+#toc-wrapper ul .toc-link.is-active-link,
+#toc-popup .toc-link.is-active-link {
+  width: fit-content;
+  max-width: 100%;
+  font-weight: inherit;
+  background-image: linear-gradient(
+    transparent 55%,
+    var(--cc-highlight) 55%,
+    var(--cc-highlight) 88%,
+    transparent 88%
+  );
+
+  &::before {
+    display: none;
+  }
+}
+
+/* shown by `assets/js/footnotes.js` */
+.cc-footnote-pop {
+  position: absolute;
+  z-index: 1060;
+  max-width: 22rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 3px;
+  background-color: color-mix(in srgb, var(--cc-amber) 22%, var(--cc-surface));
+  box-shadow:
+    0 0 0 1px var(--cc-outline-soft),
+    0 10px 20px -12px rgb(0 0 0 / 45%);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--cc-text);
+  pointer-events: none;
+  opacity: 0;
+  transform: rotate(-1deg) translateY(4px);
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: rotate(-1deg);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+/* shown by `assets/js/reading-progress.js` */
+.cc-time-left {
+  position: fixed;
+  z-index: 1030;
+  bottom: 1rem;
+  left: 50%;
+  padding: 0.1rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--cc-surface);
+  box-shadow:
+    0 0 0 1px var(--cc-outline-soft),
+    0 6px 14px -10px rgb(0 0 0 / 40%);
+  font-family: $cc-font-hand;
+  font-size: 1rem;
+  color: var(--cc-pencil);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.25s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
+/* --- 404 page --- */
+
+/* the drop-shadow sits on the parent so it follows the masked, torn edges */
+.cc-torn-note {
+  max-width: 34rem;
+  margin: 2.5rem auto;
+  transform: rotate(-1deg);
+  filter: drop-shadow(0 0 0.5px var(--cc-outline))
+    drop-shadow(0 10px 12px rgb(0 0 0 / 18%));
+
+  .cc-torn-paper {
+    padding: 2.25rem 2rem;
+    background-color: var(--cc-surface);
+    -webkit-mask:
+      conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg)
+        top / 14px 51% repeat-x,
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+        bottom / 14px 51% repeat-x;
+    mask:
+      conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg)
+        top / 14px 51% repeat-x,
+      conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+        bottom / 14px 51% repeat-x;
+  }
+
+  .cc-torn-title {
+    font-family: $cc-font-hand;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    color: var(--cc-pencil);
+  }
+
+  .cc-torn-links {
+    margin-bottom: 0;
+    font-family: $cc-font-ui;
+  }
+}
+
+/* --- Print --- */
+
+@media print {
+  #sidebar,
+  #topbar-wrapper,
+  #panel-wrapper,
+  #tail-wrapper,
+  #back-to-top,
+  #mask,
+  #toc-bar,
+  #toc-solo-trigger,
+  #toc-popup,
+  .post-tail-wrapper,
+  .share-wrapper,
+  .code-header > button,
+  .cc-time-left,
+  .cc-sidenote,
+  .cc-footnote-pop,
+  .cc-ambient,
+  .cc-motion-toggle,
+  #main-wrapper article > header::before,
+  body::before {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  #main-wrapper {
+    margin-left: 0;
+  }
+
+  #main-wrapper main {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .content a[href^='http']:not(.img-link)::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--cc-muted);
+    word-break: break-all;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  div[class^='language-'],
+  .table-wrapper,
+  .content img,
+  mjx-container {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  /* browsers drop backgrounds when printing by default */
+  .content h2 > span:first-child,
+  .content h3 > span:first-child {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .content mjx-container[display='true'] mjx-math {
+    filter: none;
+  }
+}
+
+/* --- Reduced motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
+  #main-wrapper article > header::before,
+  #main-wrapper article > header h1::after,
+  #post-list article.card-wrapper,
+  div[class^='language-'] .code-header > button[timeout]::after,
+  #sidebar #avatar:hover::after,
+  .cc-ambient * {
+    animation: none;
+  }
+
+  #sidebar .sidebar-bottom .cc-motion-toggle {
+    display: none;
+  }
+
+  .content a:not(.img-link),
+  .content a.img-link,
+  #post-list .post-preview,
+  #related-posts .post-preview,
+  #sidebar #avatar,
+  .post-tags .post-tag,
+  #panel-wrapper .post-tag,
+  #tags .tag,
+  .cc-footnote-pop,
+  .cc-time-left {
+    transition: none;
+  }
+}

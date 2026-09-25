@@ -1,0 +1,17 @@
+<!-- A placeholder to allow defining custom metadata -->
+
+<script defer src="{{ '/assets/js/ambient.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/palette.js' | relative_url }}"></script>
+
+{% if page.layout == 'post' %}
+  <script defer src="{{ '/assets/js/reading-progress.js' | relative_url }}"></script>
+
+  {% if page.content contains 'class="footnotes"' %}
+    <script defer src="{{ '/assets/js/footnotes.js' | relative_url }}"></script>
+  {% endif %}
+{% endif %}
+
+{% if page.mermaid %}
+  <!-- not deferred: it must run before the deferred Mermaid bundle -->
+  <script src="{{ '/assets/js/mermaid-theme.js' | relative_url }}"></script>
+{% endif %}

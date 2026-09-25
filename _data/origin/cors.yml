@@ -1,0 +1,9 @@
+# Deep-merged over jekyll-theme-chirpy's `_data/origin/cors.yml`, so only the
+# overridden keys live here.
+
+# Web Fonts (only the weights the stylesheet uses)
+webfonts: https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400&family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@400..600&family=JetBrains+Mono:ital,wght@0,400..600;1,400&family=Kalam:wght@400&display=swap
+
+# The -nofont build skips the bundled default font, since `assets/js/data/mathjax.js` loads Bonum
+mathjax:
+  js: https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml-nofont.js

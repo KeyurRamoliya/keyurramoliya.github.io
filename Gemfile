@@ -2,7 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "jekyll-theme-chirpy", "~> 7.6"
+# Pinned: the site overrides several theme files; see UPGRADING.md before changing
+gem "jekyll-theme-chirpy", "7.6.0"
 
 gem "html-proofer", "~> 5.0", group: :test
 
