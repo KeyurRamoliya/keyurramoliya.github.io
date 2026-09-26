@@ -1,0 +1,101 @@
+{%- comment -%}
+  Career as a `git log --graph`, drawn in pencil on the page: newest first,
+  each stint a branch that forks off `career` at 45° and merges back. Row
+  heights here match `.cc-log` in the stylesheet so the lines meet the text.
+{%- endcomment -%}
+
+{%- assign merge_h = 36 -%}
+{%- assign gap_h = 26 -%}
+{%- assign commit_h = 36 -%}
+{%- assign main_x = 12 -%}
+{%- assign lane_x = 38 -%}
+{%- assign stints = site.data.career | reverse -%}
+
+{%- assign y = 0 -%}
+{%- assign first_dot = merge_h | divided_by: 2 -%}
+{%- capture lines -%}{%- endcapture -%}
+{%- capture dots -%}{%- endcapture -%}
+{%- capture rows -%}{%- endcapture -%}
+
+{%- for stint in stints -%}
+  {%- assign dot = merge_h | divided_by: 2 | plus: y -%}
+  {%- capture part %}
+    <circle class="cc-log-dot" cx="{{ main_x }}" cy="{{ dot }}" r="6" />
+  {%- endcapture -%}
+  {%- assign dots = dots | append: part -%}
+  {%- capture row %}
+  <li class="cc-log-merge">
+    <span class="cc-log-hash">{{ stint.merge }}</span>
+    <span class="cc-log-refs"></span>
+    <span class="cc-log-note">merge <b style="--line: var(--cc-{{ stint.color }})">{{ stint.branch }}</b></span>
+  </li>
+  <li class="cc-log-gap" aria-hidden="true"></li>
+  {%- endcapture -%}
+  {%- assign rows = rows | append: row -%}
+  {%- assign y = y | plus: merge_h -%}
+
+  {%- assign fork_top = y -%}
+  {%- assign y = y | plus: gap_h -%}
+  {%- assign roles = stint.roles | reverse -%}
+  {%- for item in roles -%}
+    {%- assign dot = commit_h | divided_by: 2 | plus: y -%}
+    {%- capture part %}
+    <circle class="cc-log-dot" style="--line: var(--cc-{{ stint.color }})" cx="{{ lane_x }}" cy="{{ dot }}" r="6" />
+    {%- endcapture -%}
+    {%- assign dots = dots | append: part -%}
+    {%- capture row %}
+  <li class="cc-log-commit" style="--line: var(--cc-{{ stint.color }})">
+    <span class="cc-log-hash">{{ item.hash }}</span>
+    <span class="cc-log-refs">
+      {%- if forloop.first %}<span class="cc-log-pill is-branch">{{ stint.branch }}</span>{% endif -%}
+      {%- if item.tag %}<span class="cc-log-pill is-tag">{{ item.tag }}</span>{% endif -%}
+    </span>
+    <span class="cc-log-role">{{ item.role }}</span>
+    <span class="cc-log-meta">{{ stint.company }} ({{ item.years }})</span>
+  </li>
+    {%- endcapture -%}
+    {%- assign rows = rows | append: row -%}
+    {%- assign y = y | plus: commit_h -%}
+  {%- endfor -%}
+
+  {%- assign merge_top = y -%}
+  {%- assign y = y | plus: gap_h -%}
+  {%- capture part %}
+    <path class="cc-log-branch" style="--line: var(--cc-{{ stint.color }})" d="M{{ main_x }},{{ fork_top }} L{{ lane_x }},{{ fork_top | plus: gap_h }} V{{ merge_top }} L{{ main_x }},{{ y }}" />
+  {%- endcapture -%}
+  {%- assign lines = lines | append: part -%}
+  {%- capture row %}
+  <li class="cc-log-gap" aria-hidden="true"></li>
+  {%- endcapture -%}
+  {%- assign rows = rows | append: row -%}
+{%- endfor -%}
+
+{%- assign root_dot = commit_h | divided_by: 2 | plus: y -%}
+{%- assign height = y | plus: commit_h -%}
+
+<div class="cc-log">
+  <svg class="cc-log-graph" width="56" height="{{ height }}" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="cc-pencil" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="4" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+    <g filter="url(#cc-pencil)">
+      <path class="cc-log-trunk" d="M{{ main_x }},{{ first_dot }} V{{ root_dot }}" />
+      {{- lines }}
+      {{- dots }}
+      <circle class="cc-log-dot" cx="{{ main_x }}" cy="{{ root_dot }}" r="6" />
+    </g>
+  </svg>
+
+  <ol class="cc-log-rows">
+    {{- rows }}
+    <li class="cc-log-commit">
+      <span class="cc-log-hash">0000000</span>
+      <span class="cc-log-refs"></span>
+      <span class="cc-log-role">Initial commit</span>
+      <span class="cc-log-meta">B.E. Information Technology (2016)</span>
+    </li>
+  </ol>
+</div>

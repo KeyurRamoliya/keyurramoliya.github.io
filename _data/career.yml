@@ -1,0 +1,63 @@
+# Career commit graph on the About page (`_includes/career-timeline.html`), oldest first.
+# Each stint is a branch that forks from `career` and merges back (`merge` is the
+# merge commit's hash); `color` is an accent (blue, red, green, amber, violet);
+# `tag` marks a promotion. Hashes are real: short SHA-1s from a git repo that
+# replays this history (commits dated to each role, `--no-ff` merges on leaving).
+
+- branch: peacock
+  company: Peacock Technologies
+  color: violet
+  merge: d3f2ba1
+  roles:
+    - role: Jr. Software Developer
+      years: 2016–2017
+      hash: effae88
+
+- branch: casepoint
+  company: Casepoint
+  color: blue
+  merge: dbbd8c4
+  roles:
+    - role: Jr. Software Engineer
+      years: 2017–2018
+      hash: 4182312
+      tag: v1
+    - role: Sr. Software Engineer
+      years: 2018–2020
+      hash: 7117f63
+      tag: v2
+    - role: Associate System Architect
+      years: 2020–2021
+      hash: 8291a6f
+      tag: v3
+    - role: System Architect
+      years: 2021
+      hash: 3d8bc4f
+      tag: v4
+
+- branch: datagrokr
+  company: DataGrokr
+  color: green
+  merge: cbad523
+  roles:
+    - role: Sr. Software Engineer
+      years: 2021–2022
+      hash: f39f077
+
+- branch: casepoint
+  company: Casepoint
+  color: blue
+  merge: 0ab6671
+  roles:
+    - role: System Architect
+      years: 2022–2025
+      hash: 3ffeaba
+
+- branch: haat
+  company: Haat Delivery
+  color: amber
+  merge: 6ecbf87
+  roles:
+    - role: Sr. Software Engineer
+      years: 2025–2026
+      hash: 33a6d8a
