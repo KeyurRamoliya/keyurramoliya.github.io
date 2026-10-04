@@ -9,6 +9,10 @@
   {% if page.content contains 'class="footnotes"' %}
     <script defer src="{{ '/assets/js/footnotes.js' | relative_url }}"></script>
   {% endif %}
+
+  {% if page.content contains 'class="cc-ll"' or page.content contains 'class="cc-net"' %}
+    <script defer src="{{ '/assets/js/mathematicians.js' | relative_url }}"></script>
+  {% endif %}
 {% endif %}
 
 {% if page.mermaid %}

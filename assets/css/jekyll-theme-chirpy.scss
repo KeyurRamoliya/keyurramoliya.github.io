@@ -841,6 +841,826 @@ kbd {
   }
 }
 
+/* --- Mathematicians charts (`_includes/mathematicians/`) --- */
+
+.cc-ll,
+.cc-density,
+.cc-net {
+  margin: 1.5rem 0 2rem;
+
+  > figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--cc-muted);
+  }
+}
+
+.cc-ll-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+  font-family: $cc-font-ui;
+  font-size: 0.8rem;
+  color: var(--cc-muted);
+}
+
+.cc-ll-region {
+  padding: 0.05rem 0.55rem;
+  border: 1px solid var(--cc-outline-soft);
+  border-radius: 999px;
+  background: none;
+  font: inherit;
+  color: inherit;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.45rem;
+    margin-right: 0.35rem;
+    border-radius: 999px;
+    background-color: var(--c);
+    vertical-align: middle;
+  }
+
+  &[aria-pressed='true'] {
+    border-color: var(--c);
+    background-color: color-mix(in srgb, var(--c) 15%, transparent);
+    color: var(--cc-heading);
+  }
+}
+
+/* the script shows the chart; without it, the note and the table stand in */
+.cc-ll-nojs {
+  font-size: 0.9rem;
+  color: var(--cc-muted);
+
+  .cc-ll.is-ready & {
+    display: none;
+  }
+}
+
+.cc-ll-chart {
+  display: none;
+
+  .cc-ll.is-ready & {
+    display: block;
+  }
+}
+
+.cc-ll-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.cc-ll-range {
+  margin: 0;
+  font-family: $cc-font-ui;
+  font-size: 0.8rem;
+  color: var(--cc-muted);
+
+  b {
+    margin-right: 0.35rem;
+    font-family: $cc-font-hand;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--cc-pencil);
+  }
+}
+
+.cc-ll-zoom {
+  display: flex;
+  gap: 0.3rem;
+
+  button {
+    min-width: 2rem;
+    padding: 0.1rem 0.55rem;
+    border: 1px solid var(--cc-outline-soft);
+    border-radius: 6px;
+    background-color: var(--cc-surface);
+    font-family: $cc-font-ui;
+    font-size: 0.85rem;
+    color: var(--cc-heading);
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+}
+
+/* drags pan sideways; vertical swipes still scroll the page */
+.cc-ll-plot {
+  --head: 2.4rem;
+  --lane: 22px;
+
+  position: relative;
+  overflow: hidden;
+  overflow: clip; /* unlike hidden, focusing a life outside the view can't scroll it */
+  border-top: 1px solid var(--cc-outline-soft);
+  border-bottom: 1px solid var(--cc-outline-soft);
+  font-family: $cc-font-hand;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+
+  &.is-dragging {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--cc-primary);
+    outline-offset: 2px;
+  }
+}
+
+.cc-ll-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:nth-of-type(even) {
+    background-color: color-mix(in srgb, var(--cc-outline) 5%, transparent);
+  }
+}
+
+.cc-ll-band-name {
+  padding: 0 0.35rem;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.1rem;
+  color: var(--cc-muted);
+  cursor: zoom-in;
+
+  &:hover {
+    color: var(--cc-heading);
+    text-decoration: underline;
+  }
+}
+
+.cc-ll-tick {
+  position: absolute;
+  top: 1.1rem;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 0;
+  font-family: $cc-font-ui;
+  font-size: 10.5px;
+  line-height: 1rem;
+  white-space: nowrap;
+  color: var(--cc-muted);
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 1.1rem;
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid var(--cc-outline-soft);
+  }
+}
+
+.cc-ll-cursor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  border-left: 1.5px dashed var(--cc-pencil);
+  pointer-events: none;
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 4px;
+    padding: 0 0.25rem;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 1.1rem;
+    color: var(--cc-pencil);
+    background-color: var(--main-bg);
+  }
+
+  &.is-flip span {
+    right: 4px;
+    left: auto;
+  }
+}
+
+.cc-ll-life {
+  position: absolute;
+  top: calc(var(--head) + var(--row, 0) * var(--lane));
+  left: 0;
+  height: var(--lane);
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:focus-visible {
+    border-radius: 4px;
+    outline: 2px solid var(--cc-primary);
+    outline-offset: 2px;
+  }
+
+  /* the bar, on its own element so the "c." fades don't fade the name */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    min-width: 3px;
+    height: 8px;
+    margin-top: -4px;
+    border-radius: 4px 6px 5px 3px / 3px 5px 4px 6px;
+    background-color: var(--c);
+  }
+
+  &.is-c-from::before {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 40%);
+    mask-image: linear-gradient(to right, transparent, #000 40%);
+  }
+
+  &.is-c-to::before {
+    -webkit-mask-image: linear-gradient(to right, #000 60%, transparent);
+    mask-image: linear-gradient(to right, #000 60%, transparent);
+  }
+
+  &.is-c-from.is-c-to::before {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 30%, #000 70%, transparent);
+  }
+
+  &.is-dot::before {
+    right: auto;
+    left: -4px;
+    width: 8px;
+    border-radius: 50%;
+  }
+
+  &.is-span::before {
+    height: 0;
+    margin-top: -1.5px;
+    border-top: 3px dashed var(--c);
+    background: none;
+  }
+}
+
+.cc-ll-name {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 6px);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--cc-heading);
+  pointer-events: none;
+
+  .is-dot > & {
+    left: 10px;
+  }
+
+  .is-unnamed > & {
+    visibility: hidden;
+  }
+}
+
+/* a pick, the year cursor and the region filter each fade other lives; later rules win */
+.cc-ll.is-picking .cc-ll-life {
+  opacity: 0.15;
+
+  &.is-near {
+    opacity: 0.6;
+  }
+
+  &.is-linked,
+  &.is-on {
+    opacity: 1;
+  }
+}
+
+.cc-ll-life.is-on .cc-ll-name {
+  @include cc-highlighter-band;
+
+  z-index: 1;
+  visibility: visible;
+  background-color: var(--main-bg);
+}
+
+.cc-ll-life.is-linked {
+  &::before {
+    box-shadow:
+      0 0 0 2px var(--main-bg),
+      0 0 0 3.5px var(--cc-pencil);
+  }
+
+  .cc-ll-name {
+    color: var(--cc-pencil);
+  }
+}
+
+.cc-ll.is-scanning .cc-ll-life {
+  &:not(.is-alive) {
+    opacity: 0.15;
+  }
+
+  &.is-alive {
+    opacity: 1;
+  }
+}
+
+.cc-ll.is-filtering .cc-ll-life:not(.is-shown) {
+  opacity: 0.06;
+}
+
+.cc-ll-mini {
+  position: relative;
+  height: 1.6rem;
+  margin-top: 0.4rem;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.cc-ll-mini-strip {
+  position: absolute;
+  inset: 0 0 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  border-bottom: 1px solid var(--cc-outline-soft);
+
+  span {
+    flex: 1;
+    height: var(--h);
+    background-color: var(--cc-primary);
+    opacity: 0.5;
+  }
+}
+
+.cc-ll-mini-window {
+  position: absolute;
+  top: -2px;
+  bottom: 0.3rem;
+  min-width: 4px;
+  border: 1.5px solid var(--cc-pencil);
+  border-radius: 3px;
+  cursor: grab;
+}
+
+.cc-ll-card {
+  position: relative;
+  margin-top: 0.75rem;
+  padding: 0.6rem 2.25rem 0.6rem 0.9rem;
+  border: 1px solid var(--cc-outline-soft);
+  border-radius: 6px;
+  background-color: var(--cc-surface);
+  font-size: 0.9rem;
+}
+
+.cc-ll-card-head {
+  margin: 0;
+  font-family: $cc-font-ui;
+  color: var(--cc-muted);
+
+  b {
+    margin-right: 0.3rem;
+    font-family: $cc-font-hand;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--cc-heading);
+  }
+}
+
+.cc-ll-card-body {
+  margin: 0.25rem 0 0;
+}
+
+.cc-ll-card-close {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--cc-muted);
+  cursor: pointer;
+}
+
+.cc-known {
+  margin: 0.2rem 0 0;
+  font-family: $cc-font-hand;
+  font-size: 1.05rem;
+  color: var(--cc-primary);
+}
+
+.cc-jump {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: $cc-font-ui;
+  font-size: 0.8rem;
+  color: var(--cc-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cc-ll-table summary {
+  margin-top: 0.75rem;
+  font-family: $cc-font-ui;
+  font-size: 0.85rem;
+  color: var(--cc-primary);
+  cursor: pointer;
+}
+
+/* Chirpy keeps cells on one line; names and "Known for" wrap so the table fits the column */
+.content .cc-ll-table .table-wrapper > table {
+  td:first-child {
+    white-space: normal;
+  }
+
+  td:last-child {
+    min-width: 12rem;
+    white-space: normal;
+  }
+
+  /* phones stack each row, and drop the region the chart's colours already show */
+  @include bp.lt(bp.get(sm)) {
+    thead,
+    td:nth-child(3) {
+      display: none;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 0.75rem;
+      padding: 0.4rem 0;
+    }
+
+    td {
+      padding: 0;
+    }
+
+    td:nth-child(2) {
+      color: var(--cc-muted);
+    }
+
+    td:last-child {
+      grid-column: 1 / -1;
+      min-width: 0;
+      font-size: 0.9em;
+      color: var(--cc-muted);
+    }
+  }
+}
+
+.cc-density-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 8rem;
+  margin: 1.5rem 0 1.75rem;
+  padding: 0;
+  list-style: none;
+  border-bottom: 2px solid var(--cc-heading);
+
+  li {
+    position: relative;
+    flex: 1;
+    height: 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: var(--h);
+      border-radius: 3px 3px 0 0;
+      background-color: var(--bar, var(--cc-primary));
+      opacity: 0.85;
+    }
+
+    /* `--bar` is the random colour the script gives the picked bar */
+    &.is-on::before {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      border-radius: 3px;
+      outline: 2px solid var(--cc-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  /* bars become buttons once the script wires them to the lifelines */
+  .is-live & li {
+    cursor: pointer;
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+}
+
+.cc-density-count {
+  position: absolute;
+  bottom: calc(var(--h) + 0.15rem);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: $cc-font-hand;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: var(--cc-muted);
+
+  &.is-peak {
+    font-size: 0.95rem;
+    color: var(--cc-pencil);
+  }
+
+  /* phone bars are narrower than two digits, so every other count steps up a line */
+  @include bp.lt(bp.get(sm)) {
+    font-size: 0.6rem;
+
+    &.is-peak {
+      font-size: 0.7rem;
+    }
+
+    li:nth-child(even) > & {
+      bottom: calc(var(--h) + 1.1rem);
+    }
+  }
+}
+
+.cc-density-label {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  white-space: nowrap;
+  font-family: $cc-font-ui;
+  font-size: 0.65rem;
+  color: var(--cc-muted);
+
+  li:last-child > & {
+    right: 0;
+    left: auto;
+  }
+
+  /* phones keep every 1,000 years, so the labels don't run together */
+  &.is-minor {
+    @include bp.lt(bp.get(sm)) {
+      display: none;
+    }
+  }
+}
+
+.cc-net-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  margin-bottom: 0.75rem;
+  font-family: $cc-font-ui;
+  font-size: 0.85rem;
+  color: var(--cc-muted);
+
+  select {
+    padding: 0.2rem 0.4rem;
+    border: 1px solid var(--cc-outline-soft);
+    border-radius: 6px;
+    background-color: var(--cc-surface);
+    font: inherit;
+    color: var(--cc-heading);
+  }
+}
+
+/* sizes are SVG units: the 600-unit canvas fills the column */
+.cc-net svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cc-net-link {
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: round;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+
+  &.is-taught {
+    stroke: var(--cc-blue);
+  }
+
+  &.is-met {
+    stroke: var(--cc-violet);
+    stroke-dasharray: 3 3;
+  }
+
+  &.is-rivals {
+    stroke: var(--cc-pencil);
+  }
+
+  /* the most numerous kind, kept faint so the direct ties show */
+  &.is-built {
+    stroke: var(--cc-muted);
+    opacity: 0.22;
+  }
+
+  .is-picking & {
+    opacity: 0.05;
+  }
+
+  .is-picking &.is-lit {
+    stroke-width: 1.75;
+    opacity: 1;
+  }
+}
+
+.cc-net-node {
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  circle {
+    fill: var(--c);
+    stroke: var(--main-bg);
+    stroke-width: 1.5;
+  }
+
+  /* a paper-coloured halo, so threads pass behind the names */
+  text {
+    font-family: $cc-font-hand;
+    font-size: 10px;
+    fill: var(--cc-heading);
+    stroke: var(--main-bg);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    paint-order: stroke;
+  }
+
+  &.is-hub text {
+    font-size: 12px;
+  }
+
+  &:hover circle,
+  &.is-on circle {
+    stroke: var(--cc-heading);
+  }
+
+  .is-picking & {
+    opacity: 0.2;
+  }
+
+  .is-picking &.is-lit,
+  .is-picking &.is-on {
+    opacity: 1;
+  }
+
+  /* phones name only the hubs, and the people a pick lights up */
+  @include bp.lt(bp.get(sm)) {
+    text,
+    &.is-hub text {
+      display: none;
+      font-size: 20px;
+    }
+
+    &.is-hub text,
+    .is-picking &.is-lit text,
+    .is-picking &.is-on text {
+      display: inline;
+    }
+
+    .is-picking &.is-hub:not(.is-lit, .is-on) text {
+      display: none;
+    }
+  }
+}
+
+.cc-net-panel {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--cc-outline-soft);
+  border-radius: 6px;
+  background-color: var(--cc-surface);
+  font-size: 0.9rem;
+
+  ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.1rem;
+  }
+
+  li + li {
+    margin-top: 0.3rem;
+  }
+}
+
+.cc-net-head {
+  margin: 0;
+  font-family: $cc-font-ui;
+  color: var(--cc-muted);
+
+  b {
+    margin-right: 0.3rem;
+    font-family: $cc-font-hand;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--cc-heading);
+  }
+}
+
+.cc-net-kind {
+  font-family: $cc-font-ui;
+  font-size: 0.75rem;
+  color: var(--cc-muted);
+
+  &.is-taught {
+    color: var(--cc-syn-keyword);
+  }
+
+  &.is-met {
+    color: var(--cc-syn-type);
+  }
+
+  &.is-rivals {
+    color: var(--cc-pencil);
+  }
+}
+
+.cc-net-key {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: $cc-font-ui;
+  font-size: 0.8rem;
+  color: var(--cc-muted);
+
+  li::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    margin-right: 0.35rem;
+    border-top: 2px solid;
+    vertical-align: middle;
+  }
+
+  .is-taught::before {
+    border-color: var(--cc-blue);
+  }
+
+  .is-met::before {
+    border-top-style: dashed;
+    border-color: var(--cc-violet);
+  }
+
+  .is-rivals::before {
+    border-color: var(--cc-pencil);
+  }
+
+  .is-built::before {
+    border-color: var(--cc-muted);
+    opacity: 0.5;
+  }
+}
+
+.cc-net-list {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+
+  summary {
+    font-family: $cc-font-ui;
+    font-size: 0.85rem;
+    color: var(--cc-primary);
+    cursor: pointer;
+  }
+
+  li + li {
+    margin-top: 0.25rem;
+  }
+}
+
 /* --- Code blocks --- */
 
 /* JetBrains Mono ligatures (`=>`, `!=`, `::`) are on by default; keep them on */

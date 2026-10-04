@@ -1,0 +1,43 @@
+{%- comment -%} A single date counts as active in its century, like a lifespan {%- endcomment -%}
+
+{%- assign people = site.data.mathematicians.people -%}
+{%- assign counts = '' -%}
+{%- assign peak = 0 -%}
+{%- for c in (-17..19) -%}
+  {%- assign lo = c | times: 100 -%}
+  {%- assign hi = lo | plus: 99 -%}
+  {%- assign n = 0 -%}
+  {%- for p in people -%}
+    {%- assign end = p.to | default: p.from -%}
+    {%- if p.from <= hi and end >= lo -%}{%- assign n = n | plus: 1 -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if n > peak -%}{%- assign peak = n -%}{%- assign peak_year = lo -%}{%- endif -%}
+  {%- assign counts = counts | append: n | append: ',' -%}
+{%- endfor -%}
+{%- assign counts = counts | split: ',' -%}
+
+<figure class="cc-density">
+  <ol class="cc-density-bars" aria-label="Mathematicians alive per century, peaking at {{ peak }} in the century from {{ peak_year }}">
+    {%- for c in (-17..19) -%}
+      {%- assign n = counts[forloop.index0] | plus: 0 -%}
+      {%- assign h = n | times: 100.0 | divided_by: peak | round: 1 -%}
+      {%- assign lo = c | times: 100 -%}
+      {%- assign hi = lo | plus: 99 -%}
+      {%- capture span_text -%}
+        {%- if lo < 0 -%}{{ lo | abs }} BC{%- elsif lo == 0 -%}AD 1{%- else -%}{{ lo }}{%- endif %} to {% if hi < 0 -%}{{ hi | abs }} BC{%- elsif lo <= 0 -%}AD {{ hi }}{%- else -%}{{ hi }}{%- endif -%}
+      {%- endcapture -%}
+      {%- assign m = c | modulo: 5 -%}
+      {%- capture label -%}
+        {%- if c == 19 or m == 0 -%}
+          {%- if c < 0 -%}{{ c | times: -100 }} BC{%- elsif c == 0 -%}AD 1{%- else -%}{{ c | times: 100 }}{%- endif -%}
+        {%- endif -%}
+      {%- endcapture %}
+    <li style="--h: {{ h }}%" data-from="{{ lo }}" title="{{ span_text }}: {{ n }} alive">
+      {%- if n > 0 %}<span class="cc-density-count{% if lo == peak_year %} is-peak{% endif %}">{{ n }}</span>{% endif -%}
+      {%- assign m = c | modulo: 10 -%}
+      {%- if label != '' %}<span class="cc-density-label{% if m != 0 and c != 19 %} is-minor{% endif %}">{{ label }}</span>{% endif -%}
+    </li>
+    {%- endfor %}
+  </ol>
+  <figcaption>Mathematicians in the list alive in each century, 1700 BC to AD 1999.</figcaption>
+</figure>

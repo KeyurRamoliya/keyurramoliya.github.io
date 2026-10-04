@@ -1,0 +1,100 @@
+{%- comment -%} Drawn in full at build time, so it works without `assets/js/mathematicians.js` {%- endcomment -%}
+
+{%- assign data = site.data.mathematicians -%}
+{%- assign net = data.network -%}
+{%- assign last = net | last -%}
+{%- assign height = last.y | plus: 18 -%}
+
+<figure class="cc-net">
+  <div class="cc-net-controls">
+    <label for="cc-net-pick">Show the links of</label>
+    <select id="cc-net-pick">
+      <option value="">everyone</option>
+      {%- for n in net -%}
+        {%- assign p = data.people | where: 'name', n.name | first %}
+      <option value="{{ forloop.index0 }}">{{ p.label | default: p.name }} ({{ n.links }})</option>
+      {%- endfor %}
+    </select>
+  </div>
+
+  <svg viewBox="0 0 600 {{ height }}" role="img" aria-label="Network of {{ net.size }} mathematicians joined by {{ data.links.size }} links; the list below gives every link">
+    <g class="cc-net-links">
+      {%- for link in data.links -%}
+        {%- assign a = nil -%}
+        {%- assign b = nil -%}
+        {%- for n in net -%}
+          {%- if n.name == link.from -%}{%- assign a = n -%}{%- endif -%}
+          {%- if n.name == link.to -%}{%- assign b = n -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if a == nil or b == nil -%}{%- continue -%}{%- endif -%}
+        {%- assign mx = a.x | plus: b.x | divided_by: 2.0 -%}
+        {%- assign my = a.y | plus: b.y | divided_by: 2.0 -%}
+        {%- assign dx = a.x | minus: b.x | abs -%}
+        {%- assign dy = a.y | minus: b.y | abs -%}
+        {%- assign bow = dx | plus: dy | times: 0.12 -%}
+        {%- if mx < 300 -%}{%- assign cx = mx | minus: bow | round: 1 -%}{%- else -%}{%- assign cx = mx | plus: bow | round: 1 -%}{%- endif %}
+      <path class="cc-net-link is-{{ link.kind }}" data-k="{{ forloop.index0 }}" d="M{{ a.x }},{{ a.y }} Q{{ cx }},{{ my }} {{ b.x }},{{ b.y }}" />
+      {%- endfor %}
+    </g>
+    <g class="cc-net-nodes">
+      {%- for n in net -%}
+        {%- assign p = data.people | where: 'name', n.name | first -%}
+        {%- assign region = data.regions | where: 'key', p.region | first -%}
+        {%- assign r = n.links | times: 0.22 | plus: 2.5 | at_most: 8 | round: 1 %}
+      <g class="cc-net-node{% if n.links >= 10 %} is-hub{% endif %}" data-i="{{ forloop.index0 }}" style="--c: var(--cc-{{ region.color }})">
+        <title>{{ p.name }}, {{ p.dates }}: {{ n.links }} links</title>
+        <circle cx="{{ n.x }}" cy="{{ n.y }}" r="{{ r }}" />
+        <text x="{{ n.x | plus: r | plus: 3 }}" y="{{ n.y | plus: 3.5 }}">{{ p.label | default: p.name }}</text>
+      </g>
+      {%- endfor %}
+    </g>
+  </svg>
+
+  <div class="cc-net-panel" aria-live="polite" hidden></div>
+
+  <ul class="cc-net-key" aria-hidden="true">
+    <li class="is-taught">taught</li>
+    <li class="is-met">met or wrote to</li>
+    <li class="is-rivals">rivals</li>
+    <li class="is-built">built on the work of</li>
+  </ul>
+
+  <details class="cc-net-list">
+    <summary>Show all {{ data.links.size }} links as a list</summary>
+    <ol>
+      {%- for link in data.links -%}
+        {%- assign a = data.people | where: 'name', link.from | first -%}
+        {%- assign b = data.people | where: 'name', link.to | first -%}
+        {%- case link.kind -%}
+          {%- when 'taught' -%}{%- assign verb = 'taught' -%}
+          {%- when 'rivals' -%}{%- assign verb = 'clashed with' -%}
+          {%- when 'built' -%}{%- assign verb = 'built on' -%}
+          {%- else -%}{%- assign verb = 'met or wrote to' -%}
+        {%- endcase %}
+      <li><b>{{ a.label | default: a.name }}</b> {{ verb }} <b>{{ b.label | default: b.name }}</b> ({{ link.when }}): {{ link.note }}. <a href="{{ link.url }}">Source</a></li>
+      {%- endfor %}
+    </ol>
+  </details>
+
+  <script type="application/json" class="cc-net-data">
+    {
+      "people": [
+        {%- for n in net -%}
+          {%- assign p = data.people | where: 'name', n.name | first -%}
+          {"name": {{ p.name | jsonify }}, "label": {{ p.label | default: p.name | jsonify }}, "dates": {{ p.dates | jsonify }}, "known": {{ p.known | jsonify }}}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ],
+      "links": [
+        {%- for link in data.links -%}
+          {%- assign ai = nil -%}
+          {%- assign bi = nil -%}
+          {%- for n in net -%}
+            {%- if n.name == link.from -%}{%- assign ai = forloop.index0 -%}{%- endif -%}
+            {%- if n.name == link.to -%}{%- assign bi = forloop.index0 -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if ai == nil or bi == nil -%}null{%- else -%}{"a": {{ ai }}, "b": {{ bi }}, "kind": {{ link.kind | jsonify }}, "when": {{ link.when | jsonify }}, "note": {{ link.note | jsonify }}, "url": {{ link.url | jsonify }}}{%- endif -%}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</figure>

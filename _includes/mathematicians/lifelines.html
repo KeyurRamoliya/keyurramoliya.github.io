@@ -1,0 +1,61 @@
+{%- comment -%} `assets/js/mathematicians.js` lays the chart out; without it, the table carries every life {%- endcomment -%}
+
+{%- assign data = site.data.mathematicians -%}
+
+<figure class="cc-ll">
+  <ul class="cc-ll-legend" aria-label="Show only these regions">
+    {%- for r in data.regions %}
+    <li><button type="button" class="cc-ll-region" data-region="{{ r.key }}" aria-pressed="false" style="--c: var(--cc-{{ r.color }})">{{ r.label }}</button></li>
+    {%- endfor %}
+  </ul>
+
+  <p class="cc-ll-nojs">Turn on JavaScript to explore the lifelines; the table below lists every one.</p>
+
+  <div class="cc-ll-chart">
+    <div class="cc-ll-tools">
+      <p class="cc-ll-range" aria-live="polite"></p>
+      <div class="cc-ll-zoom">
+        <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+        <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+        <button type="button" data-zoom="all">Whole timeline</button>
+      </div>
+    </div>
+
+    <div class="cc-ll-plot" tabindex="0" aria-label="Lifelines timeline. Arrow keys move through time, plus and minus zoom, zero shows the whole timeline.">
+      {%- for era in data.eras %}
+      <span class="cc-ll-band" data-from="{{ era.from }}" data-to="{{ era.to }}"><button type="button" class="cc-ll-band-name" tabindex="-1">{{ era.label }}</button></span>
+      {%- endfor %}
+      <div class="cc-ll-axis" aria-hidden="true"></div>
+      <div class="cc-ll-cursor" aria-hidden="true" hidden><span></span></div>
+      {%- for p in data.people -%}
+        {%- assign region = data.regions | where: 'key', p.region | first -%}
+        {%- if p.to == nil -%}{%- assign kind = 'is-dot' -%}
+        {%- elsif p.fl -%}{%- assign kind = 'is-span' -%}
+        {%- else -%}{%- assign kind = 'is-life' -%}{%- endif %}
+      <button type="button" class="cc-ll-life {{ kind }}{% if kind == 'is-life' and p.c_from %} is-c-from{% endif %}{% if kind == 'is-life' and p.c_to %} is-c-to{% endif %}" data-name="{{ p.name }}" data-from="{{ p.from }}" data-to="{{ p.to | default: p.from }}" data-region="{{ p.region }}" data-dates="{{ p.dates }}" data-known="{{ p.known }}" aria-label="{{ p.name }}, {{ p.dates }}" style="--c: var(--cc-{{ region.color }})">
+        <span class="cc-ll-name">{{ p.label | default: p.name }}</span>
+      </button>
+      {%- endfor %}
+    </div>
+
+    <div class="cc-ll-mini" aria-hidden="true">
+      <div class="cc-ll-mini-strip"></div>
+      <div class="cc-ll-mini-window"></div>
+    </div>
+
+    <div class="cc-ll-card" aria-live="polite" hidden></div>
+  </div>
+
+  <details class="cc-ll-table">
+    <summary>Show the list as a table</summary>
+    <table>
+      <thead><tr><th>Mathematician</th><th>Dates</th><th>Region</th><th>Known for</th></tr></thead>
+      <tbody>
+        {%- for p in data.people -%}
+          {%- assign region = data.regions | where: 'key', p.region | first %}
+        <tr><td>{{ p.name }}</td><td>{{ p.dates }}</td><td>{{ region.label }}</td><td>{{ p.known }}</td></tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </details>
+</figure>

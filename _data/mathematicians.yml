@@ -1,0 +1,2570 @@
+# Wells (1987, pp. 9-11), in the book's order with its dates; years BC are negative
+# and "c." dates are flagged, since the charts fade them
+
+regions:
+  - key: egypt
+    label: Egypt
+    color: violet
+  - key: greek
+    label: Greek world
+    color: blue
+  - key: china
+    label: China
+    color: red
+  - key: india
+    label: India
+    color: amber
+  - key: islamic
+    label: Islamic world
+    color: green
+  - key: europe
+    label: Europe
+    color: heading
+
+eras:
+  - label: "Ancient Egypt"
+    from: -1800
+    to: -1500
+  - label: "Classical Greece"
+    from: -600
+    to: -323
+  - label: "Hellenistic & Roman"
+    from: -323
+    to: 500
+  - label: "India & the Islamic world"
+    from: 500
+    to: 1250
+  - label: "Late Middle Ages"
+    from: 1250
+    to: 1450
+  - label: "Renaissance"
+    from: 1450
+    to: 1600
+  - label: "Scientific Revolution"
+    from: 1600
+    to: 1700
+  - label: "Enlightenment"
+    from: 1700
+    to: 1800
+  - label: "Nineteenth century"
+    from: 1800
+    to: 1950
+
+people:
+  - name: "Ahmes"
+    region: egypt
+    from: -1650
+    c_from: true
+    fl: true
+    dates: "c.1650 BC"
+    known: "Copied the Rhind Mathematical Papyrus"
+  - name: "Pythagoras"
+    region: greek
+    from: -540
+    c_from: true
+    fl: true
+    dates: "c.540 BC"
+    known: "The Pythagorean theorem, named after him"
+  - name: "Hippocrates of Chios"
+    label: "Hippocrates"
+    region: greek
+    from: -440
+    c_from: true
+    fl: true
+    dates: "c.440 BC"
+    known: "Squared the lunes; wrote the first Elements"
+  - name: "Plato"
+    region: greek
+    from: -430
+    to: -349
+    c_from: true
+    c_to: true
+    dates: "c.430–c.349 BC"
+    known: "Founded the Academy; the Platonic solids"
+  - name: "Hippias of Elis"
+    label: "Hippias"
+    region: greek
+    from: -425
+    c_from: true
+    fl: true
+    dates: "c.425 BC"
+    known: "The quadratrix curve"
+  - name: "Theaetetus"
+    region: greek
+    from: -417
+    to: -369
+    c_from: true
+    dates: "c.417–369 BC"
+    known: "Classified irrationals; the five regular solids"
+  - name: "Archytas"
+    region: greek
+    from: -400
+    c_from: true
+    fl: true
+    dates: "c.400 BC"
+    known: "Doubled the cube with a 3D construction"
+  - name: "Xenocrates"
+    region: greek
+    from: -396
+    to: -314
+    dates: "396–314 BC"
+    known: "First recorded attempt to count combinations"
+  - name: "Theodorus of Cyrene"
+    label: "Theodorus"
+    region: greek
+    from: -390
+    c_from: true
+    fl: true
+    dates: "c.390 BC"
+    known: "Proved √3 to √17 irrational"
+  - name: "Aristotle"
+    region: greek
+    from: -384
+    to: -322
+    dates: "384–322 BC"
+    known: "Formal logic and the syllogism"
+  - name: "Menaechmus"
+    region: greek
+    from: -350
+    c_from: true
+    fl: true
+    dates: "c.350 BC"
+    known: "Discovered the conic sections"
+  - name: "Euclid"
+    region: greek
+    from: -300
+    c_from: true
+    fl: true
+    dates: "c.300 BC"
+    known: "The Elements"
+  - name: "Archimedes"
+    region: greek
+    from: -287
+    to: -212
+    c_from: true
+    dates: "c.287–212 BC"
+    known: "Area and volume of the sphere; bounds on π"
+  - name: "Nicomedes"
+    region: greek
+    from: -240
+    c_from: true
+    fl: true
+    dates: "c.240 BC"
+    known: "The conchoid, used to trisect angles"
+  - name: "Eratosthenes"
+    region: greek
+    from: -230
+    c_from: true
+    fl: true
+    dates: "c.230 BC"
+    known: "Sieve for primes; measured the Earth"
+  - name: "Diocles"
+    region: greek
+    from: -180
+    c_from: true
+    fl: true
+    dates: "c.180 BC"
+    known: "The cissoid; focus of the parabola"
+  - name: "Hipparchus"
+    region: greek
+    from: -180
+    to: -125
+    c_from: true
+    c_to: true
+    dates: "c.180–c.125 BC"
+    known: "Founded trigonometry with a table of chords"
+  - name: "Heron of Alexandria"
+    label: "Heron"
+    region: greek
+    from: 75
+    c_from: true
+    fl: true
+    dates: "c.75"
+    known: "Heron's formula for a triangle's area"
+  - name: "Ptolemy"
+    region: greek
+    from: 85
+    to: 165
+    c_from: true
+    c_to: true
+    dates: "c.85–c.165"
+    known: "The Almagest"
+  - name: "Nicomachus of Gerasa"
+    label: "Nicomachus"
+    region: greek
+    from: 100
+    c_from: true
+    fl: true
+    dates: "c.100"
+    known: "Introduction to Arithmetic"
+  - name: "Theon of Smyrna"
+    label: "Theon"
+    region: greek
+    from: 125
+    c_from: true
+    fl: true
+    dates: "c.125"
+    known: "Side and diagonal numbers approaching √2"
+  - name: "Diophantus"
+    region: greek
+    from: 1
+    to: 300
+    c_from: true
+    c_to: true
+    fl: true
+    dates: "1st or 3rd century"
+    known: "Arithmetica; early algebraic notation"
+  - name: "Pappus"
+    region: greek
+    from: 320
+    c_from: true
+    fl: true
+    dates: "c.320"
+    known: "The Collection; Pappus's hexagon theorem"
+  - name: "Iamblichus"
+    region: greek
+    from: 325
+    c_from: true
+    fl: true
+    dates: "c.325"
+    known: "Commentary on Nicomachus; Pythagorean number lore"
+  - name: "Proclus"
+    region: greek
+    from: 410
+    to: 485
+    dates: "410–485"
+    known: "Commentary on Book I of Euclid"
+  - name: "Zu Chongzhi"
+    region: china
+    from: 430
+    to: 501
+    dates: "430–501"
+    known: "π ≈ 355/113"
+  - name: "Brahmagupta"
+    region: india
+    from: 628
+    c_from: true
+    fl: true
+    dates: "c.628"
+    known: "Rules for zero and negative numbers"
+  - name: "Al-Khwarizmi"
+    label: "al-Khwarizmi"
+    region: islamic
+    from: 825
+    c_from: true
+    fl: true
+    dates: "c.825"
+    known: "Algebra (al-jabr); 'algorithm' is his name"
+  - name: "Thabit ibn Qurra"
+    label: "Thabit"
+    region: islamic
+    from: 836
+    to: 901
+    dates: "836–901"
+    known: "A rule for finding amicable numbers"
+  - name: "Mahavira"
+    region: india
+    from: 850
+    c_from: true
+    fl: true
+    dates: "c.850"
+    known: "Ganita Sara Samgraha; formula for combinations"
+  - name: "Bhaskara"
+    region: india
+    from: 1114
+    to: 1185
+    c_to: true
+    dates: "1114–c.1185"
+    known: "Lilavati; the cyclic method for Pell's equation"
+  - name: "Leonardo of Pisa (Fibonacci)"
+    label: "Fibonacci"
+    region: europe
+    from: 1170
+    to: 1240
+    c_from: true
+    c_to: true
+    dates: "c.1170–after 1240"
+    known: "Liber Abaci; brought Hindu–Arabic numerals to Europe"
+  - name: "Ibn al-Banna"
+    label: "al-Banna"
+    region: islamic
+    from: 1256
+    to: 1321
+    dates: "1256–1321"
+    known: "Found the amicable pair 17296 and 18416"
+  - name: "Zhu Shijie"
+    region: china
+    from: 1303
+    c_from: true
+    fl: true
+    dates: "early 14th century, c.1303"
+    known: "Jade Mirror of the Four Unknowns"
+  - name: "Luca Pacioli"
+    label: "Pacioli"
+    region: europe
+    from: 1445
+    to: 1517
+    c_from: true
+    dates: "c.1445–1517"
+    known: "Summa; double-entry bookkeeping"
+  - name: "Leonardo da Vinci"
+    label: "da Vinci"
+    region: europe
+    from: 1452
+    to: 1519
+    dates: "1452–1519"
+    known: "Drew the polyhedra for Divina proportione"
+  - name: "Albrecht Dürer"
+    label: "Dürer"
+    region: europe
+    from: 1471
+    to: 1528
+    dates: "1471–1528"
+    known: "The magic square in Melencolia I"
+  - name: "Michael Stifel"
+    label: "Stifel"
+    region: europe
+    from: 1486
+    to: 1567
+    c_from: true
+    dates: "1486/7–1567"
+    known: "Arithmetica integra; coined 'exponent'"
+  - name: "Niccolò Tartaglia"
+    label: "Tartaglia"
+    region: europe
+    from: 1500
+    to: 1557
+    c_from: true
+    dates: "c.1500–1557"
+    known: "Solved the cubic equation"
+  - name: "Gerolamo Cardano"
+    label: "Cardano"
+    region: europe
+    from: 1501
+    to: 1576
+    dates: "1501–1576"
+    known: "Ars Magna, publishing the cubic and quartic"
+  - name: "Robert Recorde"
+    label: "Recorde"
+    region: europe
+    from: 1510
+    to: 1558
+    c_from: true
+    dates: "c.1510–1558"
+    known: "Invented the equals sign"
+  - name: "Lodovico Ferrari"
+    label: "Ferrari"
+    region: europe
+    from: 1522
+    to: 1565
+    dates: "1522–1565"
+    known: "Solved the quartic equation"
+  - name: "François Viète"
+    label: "Viète"
+    region: europe
+    from: 1540
+    to: 1603
+    dates: "1540–1603"
+    known: "Letters for unknowns; an infinite product for π"
+  - name: "Ludolph van Ceulen"
+    label: "van Ceulen"
+    region: europe
+    from: 1540
+    to: 1610
+    dates: "1540–1610"
+    known: "π to 35 decimal places"
+  - name: "Simon Stevin"
+    label: "Stevin"
+    region: europe
+    from: 1548
+    to: 1620
+    dates: "1548–1620"
+    known: "Popularised decimal fractions"
+  - name: "John Napier"
+    label: "Napier"
+    region: europe
+    from: 1550
+    to: 1617
+    dates: "1550–1617"
+    known: "Invented logarithms"
+  - name: "Pietro Antonio Cataldi"
+    label: "Cataldi"
+    region: europe
+    from: 1552
+    to: 1626
+    dates: "1552–1626"
+    known: "Continued fractions; the sixth and seventh perfect numbers"
+  - name: "Henry Briggs"
+    label: "Briggs"
+    region: europe
+    from: 1561
+    to: 1630
+    dates: "1561–1630"
+    known: "Base-10 logarithms"
+  - name: "Johannes Kepler"
+    label: "Kepler"
+    region: europe
+    from: 1571
+    to: 1630
+    dates: "1571–1630"
+    known: "Laws of planetary motion"
+  - name: "William Oughtred"
+    label: "Oughtred"
+    region: europe
+    from: 1574
+    to: 1660
+    c_from: true
+    dates: "c.1574–1660"
+    known: "The slide rule and the × sign"
+  - name: "Claude Gaspard Bachet de Méziriac"
+    label: "Bachet"
+    region: europe
+    from: 1581
+    to: 1638
+    dates: "1581–1638"
+    known: "Latin edition of Diophantus"
+  - name: "Marin Mersenne"
+    label: "Mersenne"
+    region: europe
+    from: 1588
+    to: 1648
+    dates: "1588–1648"
+    known: "Mersenne primes"
+  - name: "Albert Girard"
+    label: "Girard"
+    region: europe
+    from: 1590
+    to: 1633
+    c_from: true
+    c_to: true
+    dates: "c.1590–c.1633"
+    known: "First statement of the fundamental theorem of algebra"
+  - name: "Girard Desargues"
+    label: "Desargues"
+    region: europe
+    from: 1591
+    to: 1661
+    dates: "1591–1661"
+    known: "Projective geometry; Desargues's theorem"
+  - name: "René Descartes"
+    label: "Descartes"
+    region: europe
+    from: 1596
+    to: 1650
+    dates: "1596–1650"
+    known: "Analytic geometry"
+  - name: "Pierre de Fermat"
+    label: "Fermat"
+    region: europe
+    from: 1601
+    to: 1665
+    dates: "1601–1665"
+    known: "Number theory; Fermat's Last Theorem"
+  - name: "William Brouncker"
+    label: "Brouncker"
+    region: europe
+    from: 1620
+    to: 1684
+    c_from: true
+    dates: "c.1620–1684"
+    known: "A continued fraction for 4/π"
+  - name: "Blaise Pascal"
+    label: "Pascal"
+    region: europe
+    from: 1623
+    to: 1662
+    dates: "1623–1662"
+    known: "Probability theory; Pascal's triangle"
+  - name: "Christiaan Huygens"
+    label: "Huygens"
+    region: europe
+    from: 1628
+    to: 1695
+    dates: "1628–1695"
+    known: "Pendulum clock; first book on probability"
+  - name: "Isaac Newton"
+    label: "Newton"
+    region: europe
+    from: 1642
+    to: 1727
+    dates: "1642–1727"
+    known: "Calculus; laws of motion and gravitation"
+  - name: "Gottfried Wilhelm Leibniz"
+    label: "Leibniz"
+    region: europe
+    from: 1646
+    to: 1716
+    dates: "1646–1716"
+    known: "Calculus and its notation"
+  - name: "Johann Bernoulli"
+    label: "J. Bernoulli"
+    region: europe
+    from: 1667
+    to: 1748
+    dates: "1667–1748"
+    known: "The brachistochrone; L'Hôpital's rule"
+  - name: "John Machin"
+    label: "Machin"
+    region: europe
+    from: 1680
+    to: 1751
+    dates: "1680–1751"
+    known: "Machin's formula for π"
+  - name: "Nicolaus Bernoulli"
+    label: "N. Bernoulli"
+    region: europe
+    from: 1687
+    to: 1759
+    dates: "1687–1759"
+    known: "The St Petersburg paradox"
+  - name: "Christian Goldbach"
+    label: "Goldbach"
+    region: europe
+    from: 1690
+    to: 1764
+    dates: "1690–1764"
+    known: "Goldbach's conjecture"
+  - name: "James Stirling"
+    label: "Stirling"
+    region: europe
+    from: 1692
+    to: 1770
+    dates: "1692–1770"
+    known: "Stirling's approximation for n!"
+  - name: "Leonhard Euler"
+    label: "Euler"
+    region: europe
+    from: 1707
+    to: 1783
+    dates: "1707–1783"
+    known: "Founded graph theory; e^iπ + 1 = 0"
+  - name: "Georges-Louis Leclerc, Comte de Buffon"
+    label: "Buffon"
+    region: europe
+    from: 1707
+    to: 1788
+    dates: "1707–1788"
+    known: "Buffon's needle"
+  - name: "Johann Heinrich Lambert"
+    label: "Lambert"
+    region: europe
+    from: 1728
+    to: 1777
+    dates: "1728–1777"
+    known: "Proved π irrational"
+  - name: "Joseph-Louis Lagrange"
+    label: "Lagrange"
+    region: europe
+    from: 1736
+    to: 1813
+    dates: "1736–1813"
+    known: "Lagrangian mechanics"
+  - name: "John Wilson"
+    label: "Wilson"
+    region: europe
+    from: 1741
+    to: 1793
+    dates: "1741–1793"
+    known: "Wilson's theorem on primes"
+  - name: "Caspar Wessel"
+    label: "Wessel"
+    region: europe
+    from: 1745
+    to: 1818
+    dates: "1745–1818"
+    known: "Complex numbers as points in the plane"
+  - name: "Pierre-Simon Laplace"
+    label: "Laplace"
+    region: europe
+    from: 1749
+    to: 1827
+    dates: "1749–1827"
+    known: "Celestial mechanics; the Laplace transform"
+  - name: "Adrien-Marie Legendre"
+    label: "Legendre"
+    region: europe
+    from: 1752
+    to: 1833
+    dates: "1752–1833"
+    known: "The method of least squares"
+  - name: "Pieter Nieuwland"
+    label: "Nieuwland"
+    region: europe
+    from: 1764
+    to: 1794
+    dates: "1764–1794"
+    known: "The largest cube through a hole in a unit cube"
+  - name: "Paolo Ruffini"
+    label: "Ruffini"
+    region: europe
+    from: 1765
+    to: 1822
+    dates: "1765–1822"
+    known: "First proof the quintic has no general formula"
+  - name: "Jean-Robert Argand"
+    label: "Argand"
+    region: europe
+    from: 1768
+    to: 1822
+    dates: "1768–1822"
+    known: "The Argand diagram"
+  - name: "Carl Friedrich Gauss"
+    label: "Gauss"
+    region: europe
+    from: 1777
+    to: 1855
+    dates: "1777–1855"
+    known: "Disquisitiones Arithmeticae; the 17-gon"
+  - name: "Charles Julien Brianchon"
+    label: "Brianchon"
+    region: europe
+    from: 1783
+    to: 1864
+    c_from: true
+    dates: "c.1783–1864"
+    known: "Brianchon's theorem"
+  - name: "Jacques Philippe Marie Binet"
+    label: "Binet"
+    region: europe
+    from: 1786
+    to: 1856
+    dates: "1786–1856"
+    known: "Binet's formula for Fibonacci numbers"
+  - name: "August Ferdinand Möbius"
+    label: "Möbius"
+    region: europe
+    from: 1790
+    to: 1868
+    dates: "1790–1868"
+    known: "The Möbius strip"
+  - name: "Charles Babbage"
+    label: "Babbage"
+    region: europe
+    from: 1792
+    to: 1871
+    dates: "1792–1871"
+    known: "The Analytical Engine"
+  - name: "Gabriel Lamé"
+    label: "Lamé"
+    region: europe
+    from: 1795
+    to: 1870
+    dates: "1795–1870"
+    known: "Fermat's Last Theorem for n = 7"
+  - name: "Jakob Steiner"
+    label: "Steiner"
+    region: europe
+    from: 1796
+    to: 1863
+    dates: "1796–1863"
+    known: "Synthetic projective geometry"
+  - name: "Augustus De Morgan"
+    label: "De Morgan"
+    region: europe
+    from: 1806
+    to: 1871
+    dates: "1806–1871"
+    known: "De Morgan's laws"
+  - name: "Joseph Liouville"
+    label: "Liouville"
+    region: europe
+    from: 1809
+    to: 1882
+    dates: "1809–1882"
+    known: "The first proven transcendental numbers"
+  - name: "William Shanks"
+    label: "Shanks"
+    region: europe
+    from: 1812
+    to: 1882
+    dates: "1812–1882"
+    known: "π to 707 places (527 correct)"
+  - name: "Eugène Charles Catalan"
+    label: "Catalan"
+    region: europe
+    from: 1814
+    to: 1894
+    dates: "1814–1894"
+    known: "Catalan numbers"
+  - name: "Charles Hermite"
+    label: "Hermite"
+    region: europe
+    from: 1822
+    to: 1901
+    dates: "1822–1901"
+    known: "Proved e transcendental"
+  - name: "Bernhard Riemann"
+    label: "Riemann"
+    region: europe
+    from: 1826
+    to: 1866
+    dates: "1826–1866"
+    known: "The Riemann hypothesis"
+  - name: "John Venn"
+    label: "Venn"
+    region: europe
+    from: 1834
+    to: 1923
+    dates: "1834–1923"
+    known: "Venn diagrams"
+  - name: "Édouard Lucas"
+    label: "Lucas"
+    region: europe
+    from: 1842
+    to: 1891
+    dates: "1842–1891"
+    known: "Proved 2^127 − 1 prime; the Tower of Hanoi"
+  - name: "Georg Cantor"
+    label: "Cantor"
+    region: europe
+    from: 1845
+    to: 1918
+    dates: "1845–1918"
+    known: "Set theory and sizes of infinity"
+  - name: "Ferdinand von Lindemann"
+    label: "Lindemann"
+    region: europe
+    from: 1852
+    to: 1939
+    dates: "1852–1939"
+    known: "Proved π transcendental"
+  - name: "David Hilbert"
+    label: "Hilbert"
+    region: europe
+    from: 1862
+    to: 1943
+    dates: "1862–1943"
+    known: "His 23 problems"
+  - name: "Derrick Norman Lehmer"
+    label: "D. N. Lehmer"
+    region: europe
+    from: 1867
+    to: 1938
+    dates: "1867–1938"
+    known: "Tables of primes and factors to 10 million"
+  - name: "G. H. Hardy"
+    label: "Hardy"
+    region: europe
+    from: 1877
+    to: 1947
+    dates: "1877–1947"
+    known: "Analytic number theory with Littlewood"
+  - name: "Srinivasa Ramanujan"
+    label: "Ramanujan"
+    region: india
+    from: 1887
+    to: 1920
+    dates: "1887–1920"
+    known: "Partitions and series for π"
+
+# One link per pair: for `taught` and `built`, `from` is the teacher or the later person
+links:
+  - from: "Plato"
+    to: "Hippias of Elis"
+    kind: rivals
+    when: "c.390 BC"
+    note: "Plato's dialogues mock Hippias as vain and arrogant"
+    url: https://en.wikipedia.org/wiki/Hippias
+  - from: "Plato"
+    to: "Theaetetus"
+    kind: met
+    when: "c.380 BC"
+    note: "Plato's friend; Theaetetus probably worked in the Academy; Plato named dialogues after him"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Theaetetus/
+  - from: "Plato"
+    to: "Xenocrates"
+    kind: taught
+    when: "c.376 BC"
+    note: "Xenocrates studied at the Academy; went with Plato to Syracuse"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Xenocrates/
+  - from: "Plato"
+    to: "Aristotle"
+    kind: taught
+    when: "367–347 BC"
+    note: "Aristotle studied at Plato's Academy for twenty years"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Aristotle/
+  - from: "Plato"
+    to: "Menaechmus"
+    kind: met
+    when: "c.350 BC"
+    note: "Proclus calls Menaechmus an associate of Plato"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Menaechmus/
+  - from: "Archytas"
+    to: "Hippocrates of Chios"
+    kind: built
+    when: "c.400 BC"
+    note: "Solved cube duplication using Hippocrates' two-mean-proportionals reduction"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Archytas/
+  - from: "Archytas"
+    to: "Plato"
+    kind: met
+    when: "c.388–361 BC"
+    note: "Close friends who wrote letters; Archytas saved Plato from Dionysius"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Archytas/
+  - from: "Xenocrates"
+    to: "Aristotle"
+    kind: met
+    when: "347 BC"
+    note: "Left Athens together for Assos after Plato's death"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Xenocrates/
+  - from: "Theodorus of Cyrene"
+    to: "Plato"
+    kind: taught
+    when: "c.399 BC"
+    note: "Theodorus taught Plato mathematics; Plato visited him in Cyrene"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Theodorus/
+  - from: "Theodorus of Cyrene"
+    to: "Theaetetus"
+    kind: taught
+    when: "c.400 BC"
+    note: "Plato's dialogue Theaetetus shows Theodorus as his teacher"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Theaetetus/
+  - from: "Aristotle"
+    to: "Hippocrates of Chios"
+    kind: rivals
+    when: "c.350 BC"
+    note: "Aristotle called Hippocrates a good geometer but foolish in business"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hippocrates/
+  - from: "Euclid"
+    to: "Hippocrates of Chios"
+    kind: built
+    when: "c.300 BC"
+    note: "Hippocrates' earlier Elements covered material in Euclid's Books I–II"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hippocrates/
+  - from: "Euclid"
+    to: "Theaetetus"
+    kind: built
+    when: "c.300 BC"
+    note: "Books X and XIII of the Elements record Theaetetus's work"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Theaetetus/
+  - from: "Euclid"
+    to: "Archytas"
+    kind: built
+    when: "c.300 BC"
+    note: "Archytas' proof uses theorems later found in Elements Book VII"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Archytas/
+  - from: "Archimedes"
+    to: "Euclid"
+    kind: built
+    when: "c.250 BC"
+    note: "Cites Euclid's Elements in On the Sphere and Cylinder"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/
+  - from: "Archimedes"
+    to: "Eratosthenes"
+    kind: met
+    when: "c.240 BC"
+    note: "Wrote The Method as a letter to Eratosthenes; sent Cattle Problem"
+    url: https://en.wikipedia.org/wiki/Archimedes
+  - from: "Nicomedes"
+    to: "Hippias of Elis"
+    kind: built
+    when: "c.240 BC"
+    note: "Used Hippias' quadratrix to square the circle"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Nicomedes/
+  - from: "Nicomedes"
+    to: "Eratosthenes"
+    kind: rivals
+    when: "c.240 BC"
+    note: "Attacked Eratosthenes' mean-proportional method at length"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Nicomedes/
+  - from: "Eratosthenes"
+    to: "Hippocrates of Chios"
+    kind: built
+    when: "c.230 BC"
+    note: "Built a mean-proportionals device from Hippocrates' cube reduction"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/
+  - from: "Eratosthenes"
+    to: "Plato"
+    kind: built
+    when: "c.230 BC"
+    note: "Wrote Platonicus on the mathematics behind Plato's philosophy"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/
+  - from: "Eratosthenes"
+    to: "Archytas"
+    kind: rivals
+    when: "c.230 BC"
+    note: "His epigram dismisses \"the difficult business of Archytas's cylinders\""
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/
+  - from: "Eratosthenes"
+    to: "Menaechmus"
+    kind: rivals
+    when: "c.230 BC"
+    note: "His epigram dismisses Menaechmus's cone-cutting solution"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/
+  - from: "Diocles"
+    to: "Archimedes"
+    kind: built
+    when: "c.180 BC"
+    note: "Solved Archimedes' problem of cutting a sphere in given ratio"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Diocles/
+  - from: "Hipparchus"
+    to: "Eratosthenes"
+    kind: rivals
+    when: "c.150 BC"
+    note: "Wrote three books \"Against the Geography of Eratosthenes\""
+    url: https://en.wikipedia.org/wiki/Hipparchus
+  - from: "Heron of Alexandria"
+    to: "Euclid"
+    kind: built
+    when: "c.60"
+    note: "Wrote a Commentary on Euclid's Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Heron/
+  - from: "Heron of Alexandria"
+    to: "Archimedes"
+    kind: built
+    when: "c.60"
+    note: "Metrica quotes and builds on Archimedes' measurement results"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Heron/
+  - from: "Ptolemy"
+    to: "Aristotle"
+    kind: built
+    when: "c.150"
+    note: "Almagest justifies Aristotle's Earth-centred system"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ptolemy/
+  - from: "Ptolemy"
+    to: "Euclid"
+    kind: built
+    when: "c.150"
+    note: "Tried to prove Euclid's parallel postulate (Proclus reports)"
+    url: https://en.wikipedia.org/wiki/Parallel_postulate
+  - from: "Ptolemy"
+    to: "Hipparchus"
+    kind: built
+    when: "c.150"
+    note: "Almagest uses, and is our main source for, Hipparchus's work"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ptolemy/
+  - from: "Theon of Smyrna"
+    to: "Plato"
+    kind: built
+    when: "c.125"
+    note: "Expositio written as mathematics needed to read Plato"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Theon_of_Smyrna/
+  - from: "Theon of Smyrna"
+    to: "Eratosthenes"
+    kind: built
+    when: "c.125"
+    note: "Expositio draws heavily on Eratosthenes' Platonicus"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/
+  - from: "Theon of Smyrna"
+    to: "Ptolemy"
+    kind: taught
+    when: "c.130"
+    note: "Ptolemy used \"Theon the mathematician's\" observations; probably his teacher"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ptolemy/
+  - from: "Pappus"
+    to: "Hippias of Elis"
+    kind: built
+    when: "c.320"
+    note: "Collection Book IV describes Hippias' quadratrix and squaring the circle"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hippias/
+  - from: "Pappus"
+    to: "Theaetetus"
+    kind: built
+    when: "c.320"
+    note: "Book X commentary describes Theaetetus's work on irrationals"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Theaetetus/
+  - from: "Pappus"
+    to: "Euclid"
+    kind: built
+    when: "c.320"
+    note: "Commentary on Elements Book X; Collection Book VII on Euclid"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pappus/
+  - from: "Pappus"
+    to: "Archimedes"
+    kind: built
+    when: "c.320"
+    note: "Collection reports Archimedes' semiregular solids and spiral"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pappus/
+  - from: "Pappus"
+    to: "Nicomedes"
+    kind: built
+    when: "c.320"
+    note: "Collection reports Nicomedes' conchoid and his angle trisection"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Nicomedes/
+  - from: "Pappus"
+    to: "Eratosthenes"
+    kind: built
+    when: "c.320"
+    note: "Lists Eratosthenes' On means among the great geometry books"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pappus/
+  - from: "Pappus"
+    to: "Heron of Alexandria"
+    kind: built
+    when: "c.320"
+    note: "Collection Book VIII describes Heron's mechanics"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Heron/
+  - from: "Pappus"
+    to: "Ptolemy"
+    kind: built
+    when: "c.320"
+    note: "Wrote a commentary on Ptolemy's Almagest"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hipparchus/
+  - from: "Pappus"
+    to: "Nicomachus of Gerasa"
+    kind: rivals
+    when: "c.320"
+    note: "Pappus reportedly despised Nicomachus's arithmetic"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Nicomachus/
+  - from: "Iamblichus"
+    to: "Pythagoras"
+    kind: built
+    when: "c.300"
+    note: "Wrote a biography of Pythagoras (On the Pythagorean Life)"
+    url: https://en.wikipedia.org/wiki/Iamblichus
+  - from: "Iamblichus"
+    to: "Nicomachus of Gerasa"
+    kind: built
+    when: "c.300"
+    note: "Wrote a commentary on Nicomachus's Introduction to Arithmetic"
+    url: https://en.wikipedia.org/wiki/Nicomachus
+  - from: "Proclus"
+    to: "Hippocrates of Chios"
+    kind: built
+    when: "c.450"
+    note: "Euclid commentary records Hippocrates' lunes and first Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hippocrates/
+  - from: "Proclus"
+    to: "Plato"
+    kind: built
+    when: "c.450"
+    note: "Head of Plato's Academy; wrote commentaries on Plato's dialogues"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Proclus/
+  - from: "Proclus"
+    to: "Aristotle"
+    kind: built
+    when: "c.450"
+    note: "Elements of Physics largely restates Aristotle's Physics"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Proclus/
+  - from: "Proclus"
+    to: "Euclid"
+    kind: built
+    when: "c.450"
+    note: "Wrote the Commentary on Euclid, Book I"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Proclus/
+  - from: "Proclus"
+    to: "Hipparchus"
+    kind: built
+    when: "c.450"
+    note: "Hypotyposis re-proves results first given by Hipparchus"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Proclus/
+  - from: "Proclus"
+    to: "Ptolemy"
+    kind: built
+    when: "c.450"
+    note: "Hypotyposis introduces Ptolemy's astronomy and re-proves its results"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Proclus/
+  - from: "Proclus"
+    to: "Pappus"
+    kind: built
+    when: "c.450"
+    note: "His Euclid commentary cites Pappus's commentary three times"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pappus/
+  - from: "Brahmagupta"
+    to: "Al-Khwarizmi"
+    kind: built
+    when: "c.825"
+    note: "Sindhind zij tables derived from Brahmasphutasiddhanta"
+    url: https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi
+  - from: "Al-Khwarizmi"
+    to: "Ptolemy"
+    kind: built
+    when: "c.830"
+    note: "Geography book based on Ptolemy's Geography, corrected its maps"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/
+  - from: "Thabit ibn Qurra"
+    to: "Pythagoras"
+    kind: built
+    when: "c.870"
+    note: "Generalised Pythagoras's theorem to arbitrary triangles"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Thabit/
+  - from: "Thabit ibn Qurra"
+    to: "Euclid"
+    kind: built
+    when: "c.870"
+    note: "Revised Hunayn's Elements translation; basis of later Arabic versions"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Thabit/
+  - from: "Thabit ibn Qurra"
+    to: "Archimedes"
+    kind: built
+    when: "c.870"
+    note: "Translated Archimedes; commentary on Liber Assumptorum; heptagon construction"
+    url: https://en.wikipedia.org/wiki/Thabit_ibn_Qurra
+  - from: "Thabit ibn Qurra"
+    to: "Ptolemy"
+    kind: built
+    when: "c.870"
+    note: "Revised Almagest translation, translated Geography, studied Planetary Hypotheses"
+    url: https://en.wikipedia.org/wiki/Thabit_ibn_Qurra
+  - from: "Thabit ibn Qurra"
+    to: "Nicomachus of Gerasa"
+    kind: built
+    when: "c.870"
+    note: "Amicable-number rule extends Euclid/Nicomachus on perfect numbers"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Thabit/
+  - from: "Mahavira"
+    to: "Brahmagupta"
+    kind: built
+    when: "850"
+    note: "Ganita Sara Samgraha written as updating of Brahmagupta's book"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Mahavira/
+  - from: "Bhaskara"
+    to: "Brahmagupta"
+    kind: built
+    when: "c.1150"
+    note: "Extended Brahmagupta's number work; corrected division by zero"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Bhaskara_II/
+  - from: "Leonardo of Pisa (Fibonacci)"
+    to: "Euclid"
+    kind: built
+    when: "c.1220"
+    note: "Commentary on Elements Book X; Practica geometriae based on Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fibonacci/
+  - from: "Leonardo of Pisa (Fibonacci)"
+    to: "Al-Khwarizmi"
+    kind: built
+    when: "1202"
+    note: "Liber abaci borrows 22 problems from al-Khwarizmi's algebra"
+    url: https://en.wikipedia.org/wiki/Liber_Abaci
+  - from: "Ibn al-Banna"
+    to: "Euclid"
+    kind: built
+    when: "c.1300"
+    note: "Wrote an introduction to Euclid's Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Al-Banna/
+  - from: "Luca Pacioli"
+    to: "Euclid"
+    kind: built
+    when: "1509"
+    note: "Published a Latin translation of Euclid's Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pacioli/
+  - from: "Luca Pacioli"
+    to: "Leonardo of Pisa (Fibonacci)"
+    kind: built
+    when: "1494"
+    note: "Summa borrowed freely from Fibonacci and acknowledged him"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pacioli/
+  - from: "Luca Pacioli"
+    to: "Leonardo da Vinci"
+    kind: taught
+    when: "1496–1506"
+    note: "Taught Leonardo maths in Milan; Leonardo illustrated Divina proportione"
+    url: https://en.wikipedia.org/wiki/Luca_Pacioli
+  - from: "Albrecht Dürer"
+    to: "Archimedes"
+    kind: built
+    when: "1525"
+    note: "Underweysung shows how to construct the spiral of Archimedes"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Durer/
+  - from: "Albrecht Dürer"
+    to: "Luca Pacioli"
+    kind: met
+    when: "1506"
+    note: "Dürer went to Bologna to meet Pacioli about proportion"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Durer/
+  - from: "Michael Stifel"
+    to: "Euclid"
+    kind: built
+    when: "1544"
+    note: "Arithmetica integra Book II treats Euclid's theory of irrationals"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stifel/
+  - from: "Michael Stifel"
+    to: "Gerolamo Cardano"
+    kind: built
+    when: "1544"
+    note: "Solved cubics/quartics with Cardano's methods, reworked his notation"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stifel/
+  - from: "Niccolò Tartaglia"
+    to: "Euclid"
+    kind: built
+    when: "1543"
+    note: "First Italian translation and edition of Euclid's Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Tartaglia/
+  - from: "Niccolò Tartaglia"
+    to: "Archimedes"
+    kind: built
+    when: "1543"
+    note: "Published Latin edition of Archimedes' works"
+    url: https://en.wikipedia.org/wiki/Niccol%C3%B2_Fontana_Tartaglia
+  - from: "Niccolò Tartaglia"
+    to: "Luca Pacioli"
+    kind: rivals
+    when: "c.1556"
+    note: "Criticised Pacioli's solution to the problem of points"
+    url: https://en.wikipedia.org/wiki/Problem_of_points
+  - from: "Gerolamo Cardano"
+    to: "Niccolò Tartaglia"
+    kind: rivals
+    when: "1539–1548"
+    note: "Cardano published Tartaglia's cubic solution despite oath; bitter feud"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Tartaglia/
+  - from: "Gerolamo Cardano"
+    to: "Lodovico Ferrari"
+    kind: taught
+    when: "1536–1545"
+    note: "Took secretary Ferrari on and taught him mathematics"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ferrari/
+  - from: "Robert Recorde"
+    to: "Euclid"
+    kind: built
+    when: "1551"
+    note: "Pathwaie to Knowledge, an abridged version of the Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Recorde/
+  - from: "Robert Recorde"
+    to: "Ptolemy"
+    kind: built
+    when: "1556"
+    note: "Castle of Knowledge introduces Ptolemy's astronomy"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Recorde/
+  - from: "Lodovico Ferrari"
+    to: "Niccolò Tartaglia"
+    kind: rivals
+    when: "1547–1548"
+    note: "Cartelli challenges, then public Milan contest won by Ferrari"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ferrari/
+  - from: "François Viète"
+    to: "Archimedes"
+    kind: built
+    when: "1593"
+    note: "Found π using Archimedes' method on a 393,216-sided polygon"
+    url: https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te
+  - from: "François Viète"
+    to: "Ptolemy"
+    kind: built
+    when: "c.1580s"
+    note: "Manuscripts on the geometry of Ptolemy's planetary theories"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Viete/
+  - from: "François Viète"
+    to: "Diophantus"
+    kind: built
+    when: "1593"
+    note: "Zetetica re-solved Diophantus's problems with his analytic art"
+    url: https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te
+  - from: "François Viète"
+    to: "Gerolamo Cardano"
+    kind: built
+    when: "c.1590"
+    note: "Based his algebra on Cardano and other Italians"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Viete/
+  - from: "Ludolph van Ceulen"
+    to: "Archimedes"
+    kind: built
+    when: "1596–1610"
+    note: "Extended Archimedes' polygon method to compute π digits"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Van_Ceulen/
+  - from: "Ludolph van Ceulen"
+    to: "Simon Stevin"
+    kind: met
+    when: "1600"
+    note: "Close friends; Stevin set up Leiden engineering school"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Van_Ceulen/
+  - from: "Simon Stevin"
+    to: "Euclid"
+    kind: built
+    when: "1583"
+    note: "Problemata geometrica based largely on Euclid and Archimedes"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stevin/
+  - from: "Simon Stevin"
+    to: "Archimedes"
+    kind: built
+    when: "1586"
+    note: "Hydrostatics treatise improved Archimedes' work"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stevin/
+  - from: "Simon Stevin"
+    to: "Albrecht Dürer"
+    kind: built
+    when: "1583"
+    note: "Problemata geometrica problems show Dürer's influence"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stevin/
+  - from: "John Napier"
+    to: "Simon Stevin"
+    kind: built
+    when: "1614–1619"
+    note: "Took up Stevin's decimal fraction notation"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stevin/
+  - from: "John Napier"
+    to: "Henry Briggs"
+    kind: met
+    when: "1615–1616"
+    note: "Briggs visited Napier twice; agreed on base-10 logarithms"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Napier/
+  - from: "Pietro Antonio Cataldi"
+    to: "Euclid"
+    kind: built
+    when: "c.1620"
+    note: "Cataldi published an edition of Euclid's Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cataldi/
+  - from: "Pietro Antonio Cataldi"
+    to: "Heron of Alexandria"
+    kind: built
+    when: "1613"
+    note: "Square-root continued fractions made Heron's ideas precise"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cataldi/
+  - from: "Pietro Antonio Cataldi"
+    to: "Ludolph van Ceulen"
+    kind: built
+    when: "c.1613"
+    note: "Used van Ceulen's π digits for rational approximations"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cataldi/
+  - from: "Henry Briggs"
+    to: "Euclid"
+    kind: built
+    when: "1620"
+    note: "Published edition of first six books of Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Briggs/
+  - from: "Johannes Kepler"
+    to: "Euclid"
+    kind: built
+    when: "1596–1619"
+    note: "Five regular solids of Elements XIII; logarithm proof from Book 5"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Kepler/
+  - from: "Johannes Kepler"
+    to: "Archimedes"
+    kind: built
+    when: "1615"
+    note: "Nova stereometria extended Archimedes' volume methods using indivisibles"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Kepler/
+  - from: "Johannes Kepler"
+    to: "Ptolemy"
+    kind: built
+    when: "1619"
+    note: "Harmonices Mundi deliberately parallels Ptolemy's Harmonica"
+    url: https://en.wikipedia.org/wiki/Harmonices_Mundi
+  - from: "Johannes Kepler"
+    to: "John Napier"
+    kind: built
+    when: "1616–1627"
+    note: "Proved Napier's logarithms valid and computed log tables for Rudolphine Tables"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Kepler/
+  - from: "William Oughtred"
+    to: "François Viète"
+    kind: built
+    when: "1631"
+    note: "Clavis symbolic algebra drew on Viète without saying so"
+    url: https://en.wikipedia.org/wiki/William_Oughtred
+  - from: "William Oughtred"
+    to: "Henry Briggs"
+    kind: met
+    when: "1618"
+    note: "Visited \"honoured friend\" Briggs at Gresham College"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Oughtred/
+  - from: "Claude Gaspard Bachet de Méziriac"
+    to: "Diophantus"
+    kind: built
+    when: "1621"
+    note: "Latin translation/edition of Diophantus's Arithmetica"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Bachet/
+  - from: "Marin Mersenne"
+    to: "Euclid"
+    kind: built
+    when: "1644"
+    note: "Edited works of Euclid"
+    url: https://en.wikipedia.org/wiki/Marin_Mersenne
+  - from: "Marin Mersenne"
+    to: "Archimedes"
+    kind: built
+    when: "1644"
+    note: "Edited works of Archimedes"
+    url: https://en.wikipedia.org/wiki/Marin_Mersenne
+  - from: "Marin Mersenne"
+    to: "Girard Desargues"
+    kind: met
+    when: "1630s"
+    note: "Desargues part of Mersenne's Paris circle"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Desargues/
+  - from: "Marin Mersenne"
+    to: "René Descartes"
+    kind: met
+    when: "1623–1648"
+    note: "Lifelong contact; Descartes' link to scientific world"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Descartes/
+  - from: "Marin Mersenne"
+    to: "Pierre de Fermat"
+    kind: met
+    when: "1636–1648"
+    note: "Mersenne wrote to Fermat; regular correspondent"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "Marin Mersenne"
+    to: "Blaise Pascal"
+    kind: met
+    when: "1637–1648"
+    note: "Pascal attended Mersenne's meetings from age 14"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/
+  - from: "Marin Mersenne"
+    to: "Christiaan Huygens"
+    kind: met
+    when: "c.1646–1648"
+    note: "Corresponded and encouraged young Huygens; never met in person"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Mersenne/
+  - from: "Albert Girard"
+    to: "Diophantus"
+    kind: built
+    when: "1625"
+    note: "Translated Arithmetica Books 5–6 into French"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Girard_Albert/
+  - from: "Albert Girard"
+    to: "Leonardo of Pisa (Fibonacci)"
+    kind: built
+    when: "1634"
+    note: "First to state the Fibonacci recurrence f(n+2)=f(n+1)+f(n)"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Girard_Albert/
+  - from: "Albert Girard"
+    to: "François Viète"
+    kind: built
+    when: "1629"
+    note: "Generalised Viète's root–coefficient formulas to all roots"
+    url: https://en.wikipedia.org/wiki/Albert_Girard
+  - from: "Albert Girard"
+    to: "Simon Stevin"
+    kind: built
+    when: "1625–1634"
+    note: "Edited and annotated Stevin's Arithmétique and collected works"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Girard_Albert/
+  - from: "Girard Desargues"
+    to: "Blaise Pascal"
+    kind: met
+    when: "1639–1640"
+    note: "Pascal admired Desargues; mystic hexagon in Desargues' projective style"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/
+  - from: "René Descartes"
+    to: "Pappus"
+    kind: built
+    when: "1637"
+    note: "La Géométrie built around solving Pappus' locus problem"
+    url: https://en.wikipedia.org/wiki/La_G%C3%A9om%C3%A9trie
+  - from: "René Descartes"
+    to: "François Viète"
+    kind: built
+    when: "1637"
+    note: "La Géométrie built on Viète's algebra, though Descartes denied reading it"
+    url: https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te
+  - from: "René Descartes"
+    to: "Girard Desargues"
+    kind: met
+    when: "c.1626"
+    note: "Descartes met Desargues in Paris; later asked him to referee"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Descartes/
+  - from: "René Descartes"
+    to: "Pierre de Fermat"
+    kind: rivals
+    when: "1637–1638"
+    note: "Bitter dispute over tangents, maxima and Dioptrique"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "René Descartes"
+    to: "Blaise Pascal"
+    kind: met
+    when: "1647"
+    note: "Descartes visited Pascal; argued about the vacuum"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/
+  - from: "René Descartes"
+    to: "Christiaan Huygens"
+    kind: met
+    when: "1630s–1640s"
+    note: "Visited Huygens home and took interest in young Christiaan"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Huygens/
+  - from: "Pierre de Fermat"
+    to: "Archimedes"
+    kind: built
+    when: "1630s"
+    note: "Generalised Archimedes' On Spirals to compute areas"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "Pierre de Fermat"
+    to: "Diophantus"
+    kind: built
+    when: "c.1637"
+    note: "Number-theory claims annotated on Diophantus's Arithmetica problems"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "Pierre de Fermat"
+    to: "François Viète"
+    kind: built
+    when: "1630s"
+    note: "Extended Viète's analysis and kept Viète's notation"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "Pierre de Fermat"
+    to: "Pietro Antonio Cataldi"
+    kind: built
+    when: "c.1640"
+    note: "Factored 2^23−1 and 2^37−1, refuting Cataldi's conjecture"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cataldi/
+  - from: "Pierre de Fermat"
+    to: "Claude Gaspard Bachet de Méziriac"
+    kind: built
+    when: "c.1637"
+    note: "Last Theorem note written in margin of Bachet's Diophantus"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "Pierre de Fermat"
+    to: "William Brouncker"
+    kind: met
+    when: "1657–1658"
+    note: "Brouncker solved Fermat's challenge nx²+1=y² in letters"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Brouncker/
+  - from: "Pierre de Fermat"
+    to: "Blaise Pascal"
+    kind: met
+    when: "1654"
+    note: "Letters founding probability theory"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/
+  - from: "Pierre de Fermat"
+    to: "Christiaan Huygens"
+    kind: met
+    when: "1656"
+    note: "Correspondence starting on probability, then number theory"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/
+  - from: "William Brouncker"
+    to: "Marin Mersenne"
+    kind: built
+    when: "1653"
+    note: "Notes proposed a variant of Mersenne's equal-temperament scale"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Brouncker/
+  - from: "William Brouncker"
+    to: "René Descartes"
+    kind: built
+    when: "1653"
+    note: "Translated Descartes' Musicae Compendium with own notes"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Brouncker/
+  - from: "Blaise Pascal"
+    to: "Luca Pacioli"
+    kind: built
+    when: "1654"
+    note: "Solved the problem of points first posed in Pacioli's Summa"
+    url: https://en.wikipedia.org/wiki/Problem_of_points
+  - from: "Christiaan Huygens"
+    to: "Archimedes"
+    kind: built
+    when: "1654"
+    note: "Preferred Archimedes' methods; Mersenne called him \"new Archimedes\""
+    url: https://en.wikipedia.org/wiki/Christiaan_Huygens
+  - from: "Christiaan Huygens"
+    to: "Girard Desargues"
+    kind: met
+    when: "1655"
+    note: "Met Desargues at Paris scientific societies"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Huygens/
+  - from: "Christiaan Huygens"
+    to: "Blaise Pascal"
+    kind: met
+    when: "1655–1660"
+    note: "Met in Paris; Huygens' cycloid work answered Pascal's challenge"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Huygens/
+  - from: "Christiaan Huygens"
+    to: "Isaac Newton"
+    kind: rivals
+    when: "1672–1673"
+    note: "Huygens criticised Newton's particle theory of light and colour"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Huygens/
+  - from: "Christiaan Huygens"
+    to: "Gottfried Wilhelm Leibniz"
+    kind: taught
+    when: "1672–1676"
+    note: "Leibniz studied mathematics and physics under Huygens in Paris"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Leibniz/
+  - from: "Isaac Newton"
+    to: "François Viète"
+    kind: built
+    when: "1664"
+    note: "Studied Viète's algebra in van Schooten's 1646 edition"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Newton/
+  - from: "Isaac Newton"
+    to: "Johannes Kepler"
+    kind: built
+    when: "1666–1687"
+    note: "Derived inverse-square law from Kepler's third law"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Newton/
+  - from: "Isaac Newton"
+    to: "René Descartes"
+    kind: built
+    when: "1664–1687"
+    note: "Studied La Géométrie; Principia refuted Cartesian vortex theory"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Newton/
+  - from: "Isaac Newton"
+    to: "William Brouncker"
+    kind: met
+    when: "1669–1672"
+    note: "Collins showed Royal Society president Brouncker Newton's results"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Newton/
+  - from: "Isaac Newton"
+    to: "Gottfried Wilhelm Leibniz"
+    kind: rivals
+    when: "1699–1716"
+    note: "Calculus priority dispute"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Newton/
+  - from: "Isaac Newton"
+    to: "James Stirling"
+    kind: met
+    when: "1717–1727"
+    note: "Friends; Newton helped him and proposed him for FRS"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stirling/
+  - from: "Gottfried Wilhelm Leibniz"
+    to: "René Descartes"
+    kind: rivals
+    when: "1686"
+    note: "Leibniz attacked Descartes' mechanics (conservation of motion)"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Leibniz/
+  - from: "Gottfried Wilhelm Leibniz"
+    to: "Blaise Pascal"
+    kind: built
+    when: "1675–1676"
+    note: "Made notes from Pascal's lost conics manuscript; studied Pascal's works"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/
+  - from: "Gottfried Wilhelm Leibniz"
+    to: "Johann Bernoulli"
+    kind: met
+    when: "1693–1716"
+    note: "Extensive correspondence, e.g. logarithms of negative numbers"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Leibniz/
+  - from: "Johann Bernoulli"
+    to: "Isaac Newton"
+    kind: rivals
+    when: "1713"
+    note: "Bernoulli strongly backed Leibniz in calculus dispute"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Bernoulli_Johann/
+  - from: "Johann Bernoulli"
+    to: "Nicolaus Bernoulli"
+    kind: met
+    when: "1713"
+    note: "Uncle and nephew; Nicolaus brought him the Commercium epistolicum"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Leibniz/
+  - from: "Johann Bernoulli"
+    to: "Leonhard Euler"
+    kind: taught
+    when: "1720s"
+    note: "Gave young Euler private Saturday tuition in Basel"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Euler/
+  - from: "John Machin"
+    to: "Johannes Kepler"
+    kind: built
+    when: "1738"
+    note: "Published \"The solution of Kepler's problem\""
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Machin/
+  - from: "John Machin"
+    to: "Isaac Newton"
+    kind: met
+    when: "1712"
+    note: "Sat on Royal Society priority committee for Newton"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Machin/
+  - from: "John Machin"
+    to: "Gottfried Wilhelm Leibniz"
+    kind: rivals
+    when: "1712"
+    note: "Committee member who ruled against Leibniz"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Machin/
+  - from: "Nicolaus Bernoulli"
+    to: "Isaac Newton"
+    kind: rivals
+    when: "1712–1716"
+    note: "Backed Leibniz; exposed Newton's errors with higher derivatives"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Bernoulli_Nicolaus(I)/
+  - from: "Nicolaus Bernoulli"
+    to: "Gottfried Wilhelm Leibniz"
+    kind: met
+    when: "1712–1716"
+    note: "Correspondence; included sum of reciprocal squares"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Bernoulli_Nicolaus(I)/
+  - from: "Nicolaus Bernoulli"
+    to: "Leonhard Euler"
+    kind: met
+    when: "1742–1743"
+    note: "Letters criticising Euler's use of divergent series"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Bernoulli_Nicolaus(I)/
+  - from: "Christian Goldbach"
+    to: "Gottfried Wilhelm Leibniz"
+    kind: met
+    when: "1711–1713"
+    note: "Met in Leipzig, then exchanged letters"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Goldbach/
+  - from: "Christian Goldbach"
+    to: "Nicolaus Bernoulli"
+    kind: met
+    when: "1712"
+    note: "Met in Oxford; Bernoulli introduced him to infinite series"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Goldbach/
+  - from: "Christian Goldbach"
+    to: "Leonhard Euler"
+    kind: met
+    when: "1729–1764"
+    note: "Famous correspondence; Goldbach conjecture in 1742 letter"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Goldbach/
+  - from: "James Stirling"
+    to: "William Brouncker"
+    kind: built
+    when: "1730"
+    note: "Accelerated convergence of series Brouncker had studied"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stirling/
+  - from: "James Stirling"
+    to: "John Machin"
+    kind: met
+    when: "1738"
+    note: "Machin wrote to Stirling on figure of the Earth"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stirling/
+  - from: "James Stirling"
+    to: "Nicolaus Bernoulli"
+    kind: met
+    when: "1717–1722"
+    note: "Friends at Venice/Padua; Stirling offered to be go-between with Newton"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Stirling/
+  - from: "Leonhard Euler"
+    to: "Euclid"
+    kind: built
+    when: "1747"
+    note: "Proved converse of Euclid's perfect-number rule (Euclid–Euler theorem)"
+    url: https://en.wikipedia.org/wiki/Euclid%E2%80%93Euler_theorem
+  - from: "Leonhard Euler"
+    to: "Pietro Antonio Cataldi"
+    kind: built
+    when: "1732–1738"
+    note: "Found next perfect number; disproved Cataldi's 2^29−1 claim"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cataldi/
+  - from: "Leonhard Euler"
+    to: "Pierre de Fermat"
+    kind: built
+    when: "1732–1760s"
+    note: "Disproved Fermat-number conjecture; proved little theorem, phi function"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Euler/
+  - from: "Leonhard Euler"
+    to: "William Brouncker"
+    kind: built
+    when: "1730s–1760s"
+    note: "Built on Brouncker's Pell-equation solution but credited it to Pell"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Brouncker/
+  - from: "Leonhard Euler"
+    to: "James Stirling"
+    kind: met
+    when: "1736–1738"
+    note: "Letters on series, harmonic series and Euler's constant"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Euler/
+  - from: "Leonhard Euler"
+    to: "Johann Heinrich Lambert"
+    kind: met
+    when: "1760–1766"
+    note: "Euler recommended Lambert; Berlin Academy colleagues"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lambert/
+  - from: "Georges-Louis Leclerc, Comte de Buffon"
+    to: "Isaac Newton"
+    kind: built
+    when: "1740"
+    note: "Translated Newton's Method of Fluxions into French"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Buffon/
+  - from: "Johann Heinrich Lambert"
+    to: "Euclid"
+    kind: built
+    when: "1766"
+    note: "Theory of parallel lines examined Euclid's fifth postulate"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lambert/
+  - from: "Johann Heinrich Lambert"
+    to: "Joseph-Louis Lagrange"
+    kind: met
+    when: "1766–1777"
+    note: "Close friends at Berlin Academy"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lagrange/
+  - from: "Joseph-Louis Lagrange"
+    to: "Diophantus"
+    kind: built
+    when: "1770"
+    note: "Proved four-square theorem that Diophantus appears to have assumed"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Diophantus/
+  - from: "Joseph-Louis Lagrange"
+    to: "Claude Gaspard Bachet de Méziriac"
+    kind: built
+    when: "1770"
+    note: "Proved four-square theorem, also called Bachet's conjecture"
+    url: https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
+  - from: "Joseph-Louis Lagrange"
+    to: "Pierre de Fermat"
+    kind: built
+    when: "1770"
+    note: "Proved four-square case of Fermat's polygonal number theorem"
+    url: https://en.wikipedia.org/wiki/Fermat_polygonal_number_theorem
+  - from: "Joseph-Louis Lagrange"
+    to: "William Brouncker"
+    kind: built
+    when: "1766–1769"
+    note: "Proved the Brouncker–Wallis algorithm for Pell's equation always terminates"
+    url: https://en.wikipedia.org/wiki/Pell%27s_equation
+  - from: "Joseph-Louis Lagrange"
+    to: "Leonhard Euler"
+    kind: met
+    when: "1754–1783"
+    note: "Sent tautochrone/variations results to Euler; long correspondence"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lagrange/
+  - from: "Joseph-Louis Lagrange"
+    to: "John Wilson"
+    kind: built
+    when: "1771"
+    note: "Gave first proof of Wilson's theorem"
+    url: https://en.wikipedia.org/wiki/Wilson%27s_theorem
+  - from: "Pierre-Simon Laplace"
+    to: "Isaac Newton"
+    kind: built
+    when: "1799–1825"
+    note: "Mécanique céleste extended Newtonian gravitational theory"
+    url: https://en.wikipedia.org/wiki/Pierre-Simon_Laplace
+  - from: "Pierre-Simon Laplace"
+    to: "Georges-Louis Leclerc, Comte de Buffon"
+    kind: built
+    when: "1812"
+    note: "Théorie analytique treats Buffon's needle problem"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Laplace/
+  - from: "Pierre-Simon Laplace"
+    to: "Joseph-Louis Lagrange"
+    kind: met
+    when: "1782–1813"
+    note: "Corresponded; colleagues at Académie and Bureau des Longitudes"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Laplace/
+  - from: "Pierre-Simon Laplace"
+    to: "Adrien-Marie Legendre"
+    kind: rivals
+    when: "1780s"
+    note: "Controversy over attraction of ellipsoids"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Laplace/
+  - from: "Adrien-Marie Legendre"
+    to: "Euclid"
+    kind: built
+    when: "1794"
+    note: "Éléments de géométrie reworked Euclid's Elements"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Legendre/
+  - from: "Adrien-Marie Legendre"
+    to: "Pierre de Fermat"
+    kind: built
+    when: "1823–1825"
+    note: "Proof of Fermat's Last Theorem for n=5"
+    url: https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem
+  - from: "Adrien-Marie Legendre"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1785–1798"
+    note: "Quadratic reciprocity from Euler; named \"Eulerian integrals\""
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Legendre/
+  - from: "Adrien-Marie Legendre"
+    to: "Johann Heinrich Lambert"
+    kind: built
+    when: "1794"
+    note: "Supplied result completing Lambert's irrationality of π proof"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lambert/
+  - from: "Adrien-Marie Legendre"
+    to: "Joseph-Louis Lagrange"
+    kind: built
+    when: "1788"
+    note: "Proof-read and edited Lagrange's Mécanique analytique"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lagrange/
+  - from: "Paolo Ruffini"
+    to: "Joseph-Louis Lagrange"
+    kind: built
+    when: "1799"
+    note: "Quintic insolubility proof built on Lagrange's Réflexions; sent him book"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ruffini/
+  - from: "Paolo Ruffini"
+    to: "Pierre-Simon Laplace"
+    kind: rivals
+    when: "early 1800s"
+    note: "Wrote a work arguing against Laplace's philosophical ideas"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ruffini/
+  - from: "Paolo Ruffini"
+    to: "Adrien-Marie Legendre"
+    kind: met
+    when: "c.1800"
+    note: "Legendre on Institute committee examining Ruffini's proof"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ruffini/
+  - from: "Jean-Robert Argand"
+    to: "Adrien-Marie Legendre"
+    kind: met
+    when: "1806"
+    note: "Argand showed Legendre his complex-plane essay"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Argand/
+  - from: "Carl Friedrich Gauss"
+    to: "Euclid"
+    kind: built
+    when: "1796"
+    note: "Heptadecagon construction extended Euclid's ruler-and-compass constructions"
+    url: https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss
+  - from: "Carl Friedrich Gauss"
+    to: "Pierre de Fermat"
+    kind: built
+    when: "1796"
+    note: "Proved triangular case of Fermat polygonal number theorem"
+    url: https://en.wikipedia.org/wiki/Fermat_polygonal_number_theorem
+  - from: "Carl Friedrich Gauss"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1796–1801"
+    note: "First proof of quadratic reciprocity, conjectured by Euler"
+    url: https://en.wikipedia.org/wiki/Quadratic_reciprocity
+  - from: "Carl Friedrich Gauss"
+    to: "Joseph-Louis Lagrange"
+    kind: met
+    when: "1804"
+    note: "Lagrange wrote praising Gauss's Disquisitiones Arithmeticae"
+    url: https://mathshistory.st-andrews.ac.uk/Extras/Gauss_Disquisitiones/
+  - from: "Carl Friedrich Gauss"
+    to: "John Wilson"
+    kind: built
+    when: "1801"
+    note: "Generalized Wilson's theorem in Disquisitiones"
+    url: https://en.wikipedia.org/wiki/Wilson%27s_theorem
+  - from: "Carl Friedrich Gauss"
+    to: "Adrien-Marie Legendre"
+    kind: rivals
+    when: "1801–1820"
+    note: "Priority disputes: least squares, quadratic reciprocity, prime distribution"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Legendre/
+  - from: "Carl Friedrich Gauss"
+    to: "August Ferdinand Möbius"
+    kind: taught
+    when: "1813"
+    note: "Möbius studied astronomy under Gauss at Göttingen"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Mobius/
+  - from: "Carl Friedrich Gauss"
+    to: "Bernhard Riemann"
+    kind: taught
+    when: "1846–1854"
+    note: "Lectured him, supervised 1851 thesis, chose Habilitation lecture"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Riemann/
+  - from: "Charles Julien Brianchon"
+    to: "Blaise Pascal"
+    kind: built
+    when: "1806"
+    note: "Rediscovered Pascal's hexagon and proved its dual"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Brianchon/
+  - from: "Jacques Philippe Marie Binet"
+    to: "Leonardo of Pisa (Fibonacci)"
+    kind: built
+    when: "1843"
+    note: "Binet's closed formula for the Fibonacci numbers"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Binet/
+  - from: "Jacques Philippe Marie Binet"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1839"
+    note: "Memoir on Euler's integrals (beta/gamma functions)"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Binet/
+  - from: "Jacques Philippe Marie Binet"
+    to: "Joseph-Louis Lagrange"
+    kind: built
+    when: "1816"
+    note: "Edited new edition of Lagrange's Mécanique analytique"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Binet/
+  - from: "Charles Babbage"
+    to: "Pierre-Simon Laplace"
+    kind: met
+    when: "1819"
+    note: "Laplace recommended Babbage for Edinburgh chair"
+    url: https://en.wikipedia.org/wiki/Charles_Babbage
+  - from: "Charles Babbage"
+    to: "Augustus De Morgan"
+    kind: met
+    when: "1830s–1860s"
+    note: "Corresponded; De Morgan tutored Babbage's collaborator Lovelace"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/De_Morgan/
+  - from: "Gabriel Lamé"
+    to: "Euclid"
+    kind: built
+    when: "1844"
+    note: "Bounded the number of steps in the Euclidean algorithm"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lame/
+  - from: "Gabriel Lamé"
+    to: "Pierre de Fermat"
+    kind: built
+    when: "1839"
+    note: "Proved Fermat's Last Theorem for n=7"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lame/
+  - from: "Gabriel Lamé"
+    to: "Pierre-Simon Laplace"
+    kind: built
+    when: "1830s"
+    note: "Solved Laplace's equation in ellipsoidal coordinates"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lame/
+  - from: "Gabriel Lamé"
+    to: "Jacques Philippe Marie Binet"
+    kind: built
+    when: "1838"
+    note: "Followed up Binet's polygon-dissection problem"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Binet/
+  - from: "Gabriel Lamé"
+    to: "Eugène Charles Catalan"
+    kind: taught
+    when: "1833–1835"
+    note: "Catalan attended Lamé's courses at École Polytechnique"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Catalan/
+  - from: "Jakob Steiner"
+    to: "Euclid"
+    kind: built
+    when: "1833"
+    note: "Poncelet–Steiner theorem: Euclidean constructions with one circle"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Steiner/
+  - from: "Jakob Steiner"
+    to: "Blaise Pascal"
+    kind: built
+    when: "1828"
+    note: "Pascal lines meet three at a time at Steiner points"
+    url: https://en.wikipedia.org/wiki/Pascal%27s_theorem
+  - from: "Jakob Steiner"
+    to: "Bernhard Riemann"
+    kind: taught
+    when: "1847–1849"
+    note: "Riemann studied under Steiner at Berlin"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Riemann/
+  - from: "Joseph Liouville"
+    to: "Christian Goldbach"
+    kind: built
+    when: "1840s"
+    note: "Inspired by reading Goldbach–Daniel Bernoulli correspondence"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Liouville/
+  - from: "Joseph Liouville"
+    to: "Jacques Philippe Marie Binet"
+    kind: met
+    when: "1838"
+    note: "Liouville encouraged Binet's polygon-dissection paper for his Journal"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Binet/
+  - from: "Joseph Liouville"
+    to: "Gabriel Lamé"
+    kind: rivals
+    when: "1847"
+    note: "Liouville refuted Lamé's claimed Fermat proof (unique factorization)"
+    url: https://mathworld.wolfram.com/IrregularPrime.html
+  - from: "Joseph Liouville"
+    to: "Eugène Charles Catalan"
+    kind: taught
+    when: "1833–1841"
+    note: "Taught at Polytechnique; Liouville advised and supported his career"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Catalan/
+  - from: "Joseph Liouville"
+    to: "Charles Hermite"
+    kind: taught
+    when: "1840s"
+    note: "Hermite attended Liouville's lectures; Liouville his academic advisor"
+    url: https://en.wikipedia.org/wiki/Joseph_Liouville
+  - from: "William Shanks"
+    to: "John Machin"
+    kind: built
+    when: "1853–1873"
+    note: "Computed π using Machin's arctangent formula"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Shanks/
+  - from: "William Shanks"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1860s"
+    note: "Calculated Euler's constant γ to many places"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Shanks/
+  - from: "Eugène Charles Catalan"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1838"
+    note: "Catalan numbers extend Euler's 1751 polygon-triangulation count"
+    url: https://en.wikipedia.org/wiki/Catalan_number
+  - from: "Eugène Charles Catalan"
+    to: "Pierre-Simon Laplace"
+    kind: built
+    when: "1888"
+    note: "Paper on Laplace's application of Bayes' theorem"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Catalan/
+  - from: "Eugène Charles Catalan"
+    to: "Jacques Philippe Marie Binet"
+    kind: built
+    when: "1838"
+    note: "Extended Binet's polygon-triangulation work (Catalan numbers)"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Binet/
+  - from: "Eugène Charles Catalan"
+    to: "Charles Hermite"
+    kind: taught
+    when: "1841–1842"
+    note: "Tutored Hermite for Polytechnique entrance exam"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hermite/
+  - from: "Charles Hermite"
+    to: "Georg Cantor"
+    kind: rivals
+    when: "1880s–1890s"
+    note: "Hermite disliked and opposed Cantor's set-theoretic world"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hermite/
+  - from: "Charles Hermite"
+    to: "David Hilbert"
+    kind: met
+    when: "1886"
+    note: "Hilbert visited Hermite's home twice in Paris"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hilbert/
+  - from: "Bernhard Riemann"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1859"
+    note: "Extended Euler's zeta function to complex variable"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Riemann/
+  - from: "John Venn"
+    to: "Leonhard Euler"
+    kind: built
+    when: "1880"
+    note: "Venn diagrams refine Euler's 1768 logic circles"
+    url: https://en.wikipedia.org/wiki/Venn_diagram
+  - from: "John Venn"
+    to: "Augustus De Morgan"
+    kind: built
+    when: "1860s–1881"
+    note: "Studied and developed De Morgan's logic treatises"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Venn/
+  - from: "Édouard Lucas"
+    to: "Leonardo of Pisa (Fibonacci)"
+    kind: built
+    when: "1870s"
+    note: "Studied Fibonacci sequence; Lucas numbers/sequences"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lucas/
+  - from: "Édouard Lucas"
+    to: "Marin Mersenne"
+    kind: built
+    when: "1876"
+    note: "Proved Mersenne number 2^127−1 prime"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lucas/
+  - from: "Georg Cantor"
+    to: "Christian Goldbach"
+    kind: built
+    when: "1894"
+    note: "Verified Goldbach's conjecture up to 1000"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cantor/
+  - from: "Georg Cantor"
+    to: "Joseph Liouville"
+    kind: built
+    when: "1874"
+    note: "Gave new proof of Liouville's transcendental-number existence"
+    url: https://en.wikipedia.org/wiki/Georg_Cantor
+  - from: "Georg Cantor"
+    to: "Bernhard Riemann"
+    kind: built
+    when: "1869–1872"
+    note: "Solved trigonometric-series uniqueness problem Riemann had attacked"
+    url: https://en.wikipedia.org/wiki/Georg_Cantor
+  - from: "Georg Cantor"
+    to: "David Hilbert"
+    kind: met
+    when: "1896–1900s"
+    note: "Wrote Hilbert about paradoxes; Hilbert defended his set theory"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Cantor/
+  - from: "Ferdinand von Lindemann"
+    to: "Johann Heinrich Lambert"
+    kind: built
+    when: "1882"
+    note: "Settled question Lambert's 1761 irrationality proof left open"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lindemann/
+  - from: "Ferdinand von Lindemann"
+    to: "Charles Hermite"
+    kind: met
+    when: "c.1877–1882"
+    note: "Visited Hermite in Paris to discuss transcendence methods"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lindemann/
+  - from: "Ferdinand von Lindemann"
+    to: "David Hilbert"
+    kind: taught
+    when: "1883–1885"
+    note: "Doctoral advisor of Hilbert at Königsberg"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lindemann/
+  - from: "David Hilbert"
+    to: "Euclid"
+    kind: built
+    when: "1899"
+    note: "Grundlagen der Geometrie axiomatized Euclidean geometry"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Hilbert/
+  - from: "David Hilbert"
+    to: "Bernhard Riemann"
+    kind: built
+    when: "1901"
+    note: "Rigorously repaired Dirichlet principle underlying Riemann's proofs"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Riemann/
+  - from: "Derrick Norman Lehmer"
+    to: "Eratosthenes"
+    kind: built
+    when: "1909"
+    note: "Factor tables continue work started by Eratosthenes' sieve"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Lehmer_Derrick_N/
+  - from: "G. H. Hardy"
+    to: "Christian Goldbach"
+    kind: built
+    when: "1923–1924"
+    note: "Hardy–Littlewood results and conjectures on Goldbach's conjecture"
+    url: https://en.wikipedia.org/wiki/Goldbach%27s_conjecture
+  - from: "G. H. Hardy"
+    to: "Bernhard Riemann"
+    kind: built
+    when: "1914"
+    note: "Proved infinitely many zeta zeros on critical line"
+    url: https://en.wikipedia.org/wiki/Riemann_hypothesis
+  - from: "G. H. Hardy"
+    to: "David Hilbert"
+    kind: built
+    when: "1920s"
+    note: "Hardy–Littlewood refined Hilbert's solution of Waring's problem"
+    url: https://en.wikipedia.org/wiki/Waring%27s_problem
+  - from: "G. H. Hardy"
+    to: "Srinivasa Ramanujan"
+    kind: met
+    when: "1913–1919"
+    note: "Letters from 1913; collaborated at Trinity College, Cambridge"
+    url: https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/
+
+# Network layout (SVG units, 600 wide): one row per linked person, generated
+network:
+  - name: "Pythagoras"
+    x: 101.5
+    y: 18
+    links: 2
+  - name: "Hippocrates of Chios"
+    x: 308.9
+    y: 29
+    links: 5
+  - name: "Plato"
+    x: 185.1
+    y: 40
+    links: 10
+  - name: "Hippias of Elis"
+    x: 390.6
+    y: 51
+    links: 3
+  - name: "Theaetetus"
+    x: 253.1
+    y: 62
+    links: 4
+  - name: "Archytas"
+    x: 118.3
+    y: 73
+    links: 4
+  - name: "Xenocrates"
+    x: 346.7
+    y: 84
+    links: 2
+  - name: "Theodorus of Cyrene"
+    x: 208.5
+    y: 95
+    links: 2
+  - name: "Aristotle"
+    x: 455.8
+    y: 106
+    links: 5
+  - name: "Menaechmus"
+    x: 283.1
+    y: 117
+    links: 2
+  - name: "Euclid"
+    x: 154.6
+    y: 128
+    links: 27
+  - name: "Archimedes"
+    x: 379.5
+    y: 139
+    links: 15
+  - name: "Nicomedes"
+    x: 240.5
+    y: 150
+    links: 3
+  - name: "Eratosthenes"
+    x: 77.9
+    y: 161
+    links: 10
+  - name: "Diocles"
+    x: 329.2
+    y: 172
+    links: 1
+  - name: "Hipparchus"
+    x: 178.5
+    y: 183
+    links: 3
+  - name: "Heron of Alexandria"
+    x: 424.0
+    y: 194
+    links: 4
+  - name: "Ptolemy"
+    x: 267.6
+    y: 205
+    links: 11
+  - name: "Nicomachus of Gerasa"
+    x: 122.7
+    y: 216
+    links: 3
+  - name: "Theon of Smyrna"
+    x: 347.7
+    y: 227
+    links: 3
+  - name: "Diophantus"
+    x: 209.3
+    y: 238
+    links: 5
+  - name: "Pappus"
+    x: 460.5
+    y: 249
+    links: 11
+  - name: "Iamblichus"
+    x: 290.9
+    y: 260
+    links: 2
+  - name: "Proclus"
+    x: 161.5
+    y: 271
+    links: 7
+  - name: "Brahmagupta"
+    x: 386.0
+    y: 282
+    links: 3
+  - name: "Al-Khwarizmi"
+    x: 254.9
+    y: 293
+    links: 3
+  - name: "Thabit ibn Qurra"
+    x: 65.8
+    y: 304
+    links: 5
+  - name: "Mahavira"
+    x: 339.0
+    y: 315
+    links: 1
+  - name: "Bhaskara"
+    x: 217.9
+    y: 326
+    links: 1
+  - name: "Leonardo of Pisa (Fibonacci)"
+    x: 451.7
+    y: 337
+    links: 6
+  - name: "Ibn al-Banna"
+    x: 286.4
+    y: 348
+    links: 1
+  - name: "Luca Pacioli"
+    x: 154.5
+    y: 359
+    links: 6
+  - name: "Leonardo da Vinci"
+    x: 371.9
+    y: 370
+    links: 1
+  - name: "Albrecht Dürer"
+    x: 240.2
+    y: 381
+    links: 3
+  - name: "Michael Stifel"
+    x: 65.2
+    y: 392
+    links: 2
+  - name: "Niccolò Tartaglia"
+    x: 320.0
+    y: 403
+    links: 5
+  - name: "Gerolamo Cardano"
+    x: 183.3
+    y: 414
+    links: 4
+  - name: "Robert Recorde"
+    x: 413.1
+    y: 425
+    links: 2
+  - name: "Lodovico Ferrari"
+    x: 270.4
+    y: 436
+    links: 2
+  - name: "François Viète"
+    x: 119.9
+    y: 447
+    links: 9
+  - name: "Ludolph van Ceulen"
+    x: 356.1
+    y: 458
+    links: 3
+  - name: "Simon Stevin"
+    x: 220.5
+    y: 469
+    links: 6
+  - name: "John Napier"
+    x: 465.0
+    y: 480
+    links: 3
+  - name: "Pietro Antonio Cataldi"
+    x: 302.5
+    y: 491
+    links: 5
+  - name: "Henry Briggs"
+    x: 161.6
+    y: 502
+    links: 3
+  - name: "Johannes Kepler"
+    x: 391.7
+    y: 513
+    links: 6
+  - name: "William Oughtred"
+    x: 237.7
+    y: 524
+    links: 2
+  - name: "Claude Gaspard Bachet de Méziriac"
+    x: 71.2
+    y: 535
+    links: 3
+  - name: "Marin Mersenne"
+    x: 329.1
+    y: 546
+    links: 9
+  - name: "Albert Girard"
+    x: 186.8
+    y: 557
+    links: 4
+  - name: "Girard Desargues"
+    x: 427.1
+    y: 568
+    links: 4
+  - name: "René Descartes"
+    x: 273.4
+    y: 579
+    links: 10
+  - name: "Pierre de Fermat"
+    x: 126.0
+    y: 590
+    links: 15
+  - name: "William Brouncker"
+    x: 357.2
+    y: 601
+    links: 7
+  - name: "Blaise Pascal"
+    x: 218.5
+    y: 612
+    links: 9
+  - name: "Christiaan Huygens"
+    x: 463.3
+    y: 623
+    links: 8
+  - name: "Isaac Newton"
+    x: 300.1
+    y: 634
+    links: 12
+  - name: "Gottfried Wilhelm Leibniz"
+    x: 164.0
+    y: 645
+    links: 8
+  - name: "Johann Bernoulli"
+    x: 387.5
+    y: 656
+    links: 4
+  - name: "John Machin"
+    x: 248.6
+    y: 667
+    links: 5
+  - name: "Nicolaus Bernoulli"
+    x: 87.9
+    y: 678
+    links: 6
+  - name: "Christian Goldbach"
+    x: 330.7
+    y: 689
+    links: 6
+  - name: "James Stirling"
+    x: 211.8
+    y: 700
+    links: 5
+  - name: "Leonhard Euler"
+    x: 463.8
+    y: 711
+    links: 17
+  - name: "Georges-Louis Leclerc, Comte de Buffon"
+    x: 287.5
+    y: 722
+    links: 2
+  - name: "Johann Heinrich Lambert"
+    x: 162.1
+    y: 733
+    links: 5
+  - name: "Joseph-Louis Lagrange"
+    x: 380.4
+    y: 744
+    links: 12
+  - name: "John Wilson"
+    x: 247.2
+    y: 755
+    links: 2
+  - name: "Pierre-Simon Laplace"
+    x: 88.2
+    y: 766
+    links: 8
+  - name: "Adrien-Marie Legendre"
+    x: 326.9
+    y: 777
+    links: 9
+  - name: "Paolo Ruffini"
+    x: 190.4
+    y: 788
+    links: 3
+  - name: "Jean-Robert Argand"
+    x: 427.0
+    y: 799
+    links: 1
+  - name: "Carl Friedrich Gauss"
+    x: 277.7
+    y: 810
+    links: 8
+  - name: "Charles Julien Brianchon"
+    x: 121.9
+    y: 821
+    links: 1
+  - name: "Jacques Philippe Marie Binet"
+    x: 365.7
+    y: 832
+    links: 6
+  - name: "August Ferdinand Möbius"
+    x: 222.0
+    y: 843
+    links: 1
+  - name: "Charles Babbage"
+    x: 468.5
+    y: 854
+    links: 2
+  - name: "Gabriel Lamé"
+    x: 306.4
+    y: 865
+    links: 6
+  - name: "Jakob Steiner"
+    x: 170.8
+    y: 876
+    links: 3
+  - name: "Augustus De Morgan"
+    x: 406.4
+    y: 887
+    links: 2
+  - name: "Joseph Liouville"
+    x: 261.3
+    y: 898
+    links: 6
+  - name: "William Shanks"
+    x: 96.4
+    y: 909
+    links: 2
+  - name: "Eugène Charles Catalan"
+    x: 339.9
+    y: 920
+    links: 6
+  - name: "Charles Hermite"
+    x: 217.6
+    y: 931
+    links: 5
+  - name: "Bernhard Riemann"
+    x: 463.0
+    y: 942
+    links: 6
+  - name: "John Venn"
+    x: 325.6
+    y: 953
+    links: 2
+  - name: "Édouard Lucas"
+    x: 169.9
+    y: 964
+    links: 2
+  - name: "Georg Cantor"
+    x: 377.7
+    y: 975
+    links: 5
+  - name: "Ferdinand von Lindemann"
+    x: 241.0
+    y: 986
+    links: 3
+  - name: "David Hilbert"
+    x: 113.1
+    y: 997
+    links: 6
+  - name: "Derrick Norman Lehmer"
+    x: 258.8
+    y: 1008
+    links: 1
+  - name: "G. H. Hardy"
+    x: 215.2
+    y: 1019
+    links: 4
+  - name: "Srinivasa Ramanujan"
+    x: 426.7
+    y: 1030
+    links: 1
